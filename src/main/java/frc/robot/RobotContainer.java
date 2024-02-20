@@ -30,7 +30,7 @@ public class RobotContainer {
   private double POVSpeed = TunerConstants.kSpeedAt12VoltsMps / 6; //min speed used with POV buttons
 
 
-    //subsystems used
+  //subsystems used
   public static ShoulderSubsystem shouldersubsystem = new ShoulderSubsystem();
   public static LaserSubsystem lasersubsystem = new LaserSubsystem();
   public static FeedSubsystem feedsubsystem = new FeedSubsystem();
@@ -51,21 +51,21 @@ public class RobotContainer {
   private final SwerveRequest.FieldCentricFacingAngle fieldcentricfacingangle = new SwerveRequest.FieldCentricFacingAngle().withDeadband(MaxSpeed * 0.1).withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   
 
-//joystick for manual subsystem control
-public static CommandXboxController joystick2 = new CommandXboxController(2); //xbox360controller for manual control of mechanisms
+  //joystick for manual subsystem control
+  public static CommandXboxController joystick2 = new CommandXboxController(2); //xbox360controller for manual control of mechanisms
 
-//XK-80 HID keypad
-private final XboxController m_operator1Controller = new XboxController(1);
-private JoystickButton Button_1 = new JoystickButton(m_operator1Controller, 1);
-//private JoystickButton Button_2 = new JoystickButton(m_operator1Controller, 2);
-//private JoystickButton Button_3 = new JoystickButton(m_operator1Controller, 3);
-private JoystickButton Button_4 = new JoystickButton(m_operator1Controller, 4);
-private JoystickButton Button_5 = new JoystickButton(m_operator1Controller, 5);
-private JoystickButton Button_6 = new JoystickButton(m_operator1Controller, 6);
-private JoystickButton Button_10 = new JoystickButton(m_operator1Controller, 10);
-private JoystickButton Button_20 = new JoystickButton(m_operator1Controller, 20);
-private JoystickButton Button_21 = new JoystickButton(m_operator1Controller, 21);
-private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22);
+  //XK-80 HID keypad
+  private final XboxController m_operator1Controller = new XboxController(1);
+  private JoystickButton Button_1 = new JoystickButton(m_operator1Controller, 1);
+  //private JoystickButton Button_2 = new JoystickButton(m_operator1Controller, 2);
+  //private JoystickButton Button_3 = new JoystickButton(m_operator1Controller, 3);
+  private JoystickButton Button_4 = new JoystickButton(m_operator1Controller, 4);
+  private JoystickButton Button_5 = new JoystickButton(m_operator1Controller, 5);
+  private JoystickButton Button_6 = new JoystickButton(m_operator1Controller, 6);
+  private JoystickButton Button_10 = new JoystickButton(m_operator1Controller, 10);
+  private JoystickButton Button_20 = new JoystickButton(m_operator1Controller, 20);
+  private JoystickButton Button_21 = new JoystickButton(m_operator1Controller, 21);
+  private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22);
 
   /* Path follower */
   //private Command runAuto = drivetrain.getAutoPath("Tests");
@@ -83,7 +83,7 @@ private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22)
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ).ignoringDisable(true));
 
-//assign driver joystick buttons to drivetrain functions
+    //assign driver joystick buttons to drivetrain functions
     //Robot centric driving "aka forwardStraight"
     /*
     joystick.y().toggleOnTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
@@ -139,7 +139,7 @@ private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22)
 
     //Xk-80 HID Port 1
     //Button_1.whileTrue(new IntakeCommand());
-   // Button_2.whileTrue(new LoadCommand());
+    // Button_2.whileTrue(new LoadCommand());
 
     // Will be a parallel race group that ends after one second with the two and three second commands getting interrupted.
     //button.onTrue(Commands.race(twoSecCommand, oneSecCommand, threeSecCommand));
@@ -167,7 +167,8 @@ private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22)
       .withTimeout(0.25)
       .andThen(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
       );
-    
+      
+    //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand());
     joystick2.b().whileTrue(new ClimbCommand());
 
@@ -202,12 +203,6 @@ private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22)
   NamedCommands.registerCommand("Intake", new A_IntakeCommand().withTimeout(5));
   NamedCommands.registerCommand("Shoot", new A_ShootCommand().withTimeout(3));
   NamedCommands.registerCommand("Home", new A_HomeAllCommand().withTimeout(5));
-  /*
-  NamedCommands.registerCommand("A_Floor", new A_FloorAutoCommand().andThen(new IntakeInCommand().withTimeout(1)));
-  NamedCommands.registerCommand("A_High", new A_HighCommand().andThen(new IntakeOutCommand().withTimeout(1)));
-  NamedCommands.registerCommand("A_Low", new A_LowCommand().andThen(new IntakeOutCommand().withTimeout(1)));
-  NamedCommands.registerCommand("A_Mid", new A_MidCommand().andThen(new IntakeOutCommand().withTimeout(1)));
-  */
 }
 
   public Command getAutonomousCommand() {
