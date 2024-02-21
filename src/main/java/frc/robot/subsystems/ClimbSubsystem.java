@@ -23,7 +23,7 @@ public class ClimbSubsystem extends SubsystemBase {
   public ClimbSubsystem() {
     var fx_cfg = new TalonFXConfiguration(); // creates a default TalonFX configuration
     fx_cfg.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
-    fx_cfg.MotorOutput.NeutralMode = NeutralModeValue.Coast;
+    fx_cfg.MotorOutput.NeutralMode = NeutralModeValue.Brake;
     
     motor1.getConfigurator().apply(fx_cfg, 0.050);
  

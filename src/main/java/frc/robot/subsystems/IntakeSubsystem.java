@@ -39,7 +39,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
     motor1.getConfigurator().apply(fx_cfg, 0.050);
 
-      fx_cfg.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
+    fx_cfg.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
 
     motor2.getConfigurator().apply(fx_cfg, 0.050);
   }
