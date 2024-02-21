@@ -185,10 +185,10 @@ public class RobotContainer {
 
   private void namedcommands() {
   // Register Named Commands for pathplanner to use during autonomous
-  NamedCommands.registerCommand("Prepare", new PrepareToShootCommand().withTimeout(2));
+  NamedCommands.registerCommand("Prepare", new PrepareToShootCommand().withTimeout(5));
   NamedCommands.registerCommand("Intake", new A_IntakeLoadCommand().withTimeout(5));
-  NamedCommands.registerCommand("Shoot", new A_ShootCommand().withTimeout(1));
-  NamedCommands.registerCommand("Home", new A_HomeAllCommand().withTimeout(1));
+  NamedCommands.registerCommand("Shoot", new A_ShootCommand().withTimeout(5));
+  NamedCommands.registerCommand("Home", new A_HomeAllCommand().withTimeout(5));
 }
 
   public RobotContainer() {

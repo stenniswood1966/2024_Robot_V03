@@ -12,6 +12,7 @@ public class A_IntakeLoadCommand extends Command {
   /** Creates a new A_IntakeCommand. */
   public A_IntakeLoadCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.intakesubsystem, RobotContainer.feedsubsystem);
   }
 
   // Called when the command is initially scheduled.
