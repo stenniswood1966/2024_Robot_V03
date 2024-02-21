@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
@@ -25,6 +26,7 @@ public class A_HomeAllCommand extends Command {
   @Override
   public void execute() {
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristHomePosition);
+    new WaitCommand(0.25);
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderHomePosition);
   }
 
@@ -35,6 +37,6 @@ public class A_HomeAllCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
