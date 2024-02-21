@@ -73,19 +73,22 @@ public class ShoulderSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    if (motor1.getVelocity().getValueAsDouble() == 0.0) {
+      Constants.k_ShoulderMMisMoving = false;
+    }else {
+      Constants.k_ShoulderMMisMoving = true;
+    }
+
     SmartDashboard.putBoolean("MM Status - Shoulder: ", Constants.k_ShoulderMMisMoving);
     SmartDashboard.putNumber("Shoulder position: ", motor1.getPosition().getValueAsDouble());
+
   }
 
   public void enablemotionmagic(double targetpos) {
     // periodic, run Motion Magic with slot 0 configs,
     motor1.setControl(mmReq.withPosition(targetpos).withSlot(0));
 
-    if (motor1.getVelocity().getValueAsDouble() == 0.0 && Math.abs(targetpos - (motor1.getPosition().getValueAsDouble())) < Constants.k_MMRange) {
-      Constants.k_ShoulderMMisMoving = false;
-    }else {
-      Constants.k_ShoulderMMisMoving = true;
-    }
+
   }
 
   public void set(Double speed){

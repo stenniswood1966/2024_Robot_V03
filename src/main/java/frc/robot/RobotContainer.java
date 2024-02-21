@@ -170,7 +170,8 @@ public class RobotContainer {
       
     //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand());
-    joystick2.b().whileTrue(new ClimbCommand());
+    joystick2.b().whileTrue(new PrepareToShootCommand());
+    joystick2.y().whileTrue(new A_HomeAllCommand());
 
 
     /* Bindings for drivetrain characterization */
@@ -181,6 +182,14 @@ public class RobotContainer {
     joystick.start().and(joystick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
     joystick.start().and(joystick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
   }
+
+  private void namedcommands() {
+  // Register Named Commands for pathplanner to use during autonomous
+  NamedCommands.registerCommand("Prepare", new PrepareToShootCommand().withTimeout(2));
+  NamedCommands.registerCommand("Intake", new A_IntakeCommand().withTimeout(5));
+  NamedCommands.registerCommand("Shoot", new A_ShootCommand().withTimeout(1));
+  NamedCommands.registerCommand("Home", new A_HomeAllCommand().withTimeout(1));
+}
 
   public RobotContainer() {
     configureBindings();
@@ -198,12 +207,7 @@ public class RobotContainer {
     SmartDashboard.putData(wristsubsystem);
   }
 
-  private void namedcommands() {
-  // Register Named Commands for pathplanner to use during autonomous
-  NamedCommands.registerCommand("Intake", new A_IntakeCommand().withTimeout(5));
-  NamedCommands.registerCommand("Shoot", new A_ShootCommand().withTimeout(3));
-  NamedCommands.registerCommand("Home", new A_HomeAllCommand().withTimeout(5));
-}
+
 
   public Command getAutonomousCommand() {
     /* First put the drivetrain into auto run mode, then run the auto */

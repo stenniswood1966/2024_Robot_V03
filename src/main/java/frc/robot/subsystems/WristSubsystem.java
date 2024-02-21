@@ -75,6 +75,12 @@ public class WristSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    if (cancoder.getVelocity().getValueAsDouble() == 0.0) {
+      Constants.k_WristMMisMoving = false;
+    }else {
+      Constants.k_WristMMisMoving = true;
+    }
+
     SmartDashboard.putBoolean("MM Status - Wrist: ", Constants.k_WristMMisMoving);
     SmartDashboard.putNumber("Wrist position: ", cancoder.getPosition().getValueAsDouble());
   }
@@ -91,11 +97,7 @@ motor1.setControl(motorRequest); // Requests the motor to move
     // periodic, run Motion Magi with slot 0 configs,
     motor1.setControl(mmReq.withPosition(targetpos).withSlot(0));
 
-    if (cancoder.getVelocity().getValueAsDouble() == 0.0 && Math.abs(targetpos - (cancoder.getPosition().getValueAsDouble())) < Constants.k_MMRange) {
-      Constants.k_WristMMisMoving = false;
-    }else {
-      Constants.k_WristMMisMoving = true;
-    }
+
   }
 
   public void disablemotionmagic() {

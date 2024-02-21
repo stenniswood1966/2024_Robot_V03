@@ -6,25 +6,27 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class A_HomeAllCommand extends Command {
   /** Creates a new A_HomeAllCommand. */
   public A_HomeAllCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.shouldersubsystem, RobotContainer.wristsubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    new WristPositionCommand(Constants.k_WristHomePosition)
-    .withTimeout(.25)
-    .andThen(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
-    .withTimeout(.5);
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristHomePosition);
+    RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderHomePosition);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -33,6 +35,6 @@ public class A_HomeAllCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

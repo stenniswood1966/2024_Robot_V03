@@ -41,7 +41,6 @@ public class WristPositionCommand extends Command {
       return false;
     } else {
       return true;
-      
     }
   }
 }

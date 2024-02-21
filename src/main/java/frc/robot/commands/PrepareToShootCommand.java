@@ -18,7 +18,7 @@ public class PrepareToShootCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("I tried to run");
+    System.out.println("PrepareToShootCMD");
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
   }
@@ -36,6 +36,11 @@ public class PrepareToShootCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    //return false;
+    if (Constants.k_ShoulderMMisMoving && Constants.k_WristMMisMoving) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
