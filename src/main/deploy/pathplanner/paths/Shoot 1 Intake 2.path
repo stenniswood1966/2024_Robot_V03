@@ -41,13 +41,13 @@
             {
               "type": "named",
               "data": {
-                "name": "Shoot"
+                "name": "A_ShootCommand"
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "Home"
+                "name": "A_HomeAllCommand"
               }
             }
           ]
