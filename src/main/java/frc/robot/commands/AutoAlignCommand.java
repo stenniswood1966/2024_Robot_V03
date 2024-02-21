@@ -43,7 +43,7 @@ public class AutoAlignCommand extends Command {
 
       
      // System.out.println("limelight: " + tx);
-      //System.out.println(_drivetrain.getState().Pose.getRotation().getDegrees());
+    //System.out.println(_drivetrain.getState().Pose.getRotation().getDegrees());
   }
 
   // Called once the command ends or is interrupted.

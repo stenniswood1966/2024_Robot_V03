@@ -196,13 +196,6 @@ public class RobotContainer {
     //pathplanner sendablechooser
     autochooser = AutoBuilder.buildAutoChooser("None");
     SmartDashboard.putData("Auto Chooser", autochooser);
-
-    SmartDashboard.putData(feedsubsystem);
-    SmartDashboard.putData(intakesubsystem);
-    SmartDashboard.putData(lasersubsystem);
-    SmartDashboard.putData(shootsubsystem);
-    SmartDashboard.putData(shouldersubsystem);
-    SmartDashboard.putData(wristsubsystem);
   }
 
 
