@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class PrepareToShootCommand extends Command {
+public class A_PrepareToShootCommand extends Command {
   /** Creates a new PrepareToShoot. */
-  public PrepareToShootCommand() {
+  public A_PrepareToShootCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shouldersubsystem, RobotContainer.wristsubsystem);
   }
@@ -18,7 +18,7 @@ public class PrepareToShootCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("PrepareToShootCMD");
+    //System.out.println("PrepareToShootCMD");
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
   }

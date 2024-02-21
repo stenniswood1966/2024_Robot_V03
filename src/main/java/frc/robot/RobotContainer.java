@@ -143,9 +143,9 @@ public class RobotContainer {
     //button.onTrue(Commands.race(twoSecCommand, oneSecCommand, threeSecCommand));
     Button_1.onTrue(Commands.race(new IntakeCommand(), new LoadCommand()).withTimeout(5)); //commands run until the NoteisReady variable = true or timeout
 
-    Button_5.onTrue(new PrepareToShootCommand());
+    Button_5.onTrue(new A_PrepareToShootCommand());
     
-    Button_6.onTrue(new PrepareToShootCommand());
+    Button_6.onTrue(new A_PrepareToShootCommand());
 
     Button_10.whileTrue(new OutakeCommand());
 
@@ -168,7 +168,7 @@ public class RobotContainer {
       
     //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand());
-    joystick2.b().whileTrue(new PrepareToShootCommand());
+    joystick2.b().whileTrue(new A_PrepareToShootCommand());
     joystick2.y().whileTrue(new A_HomeAllCommand());
 
 
@@ -183,7 +183,7 @@ public class RobotContainer {
 
   private void namedcommands() {
   // Register Named Commands for pathplanner to use during autonomous
-  NamedCommands.registerCommand("Prepare", new PrepareToShootCommand().withTimeout(5));
+  NamedCommands.registerCommand("Prepare", new A_PrepareToShootCommand().withTimeout(5));
   NamedCommands.registerCommand("Intake", new A_IntakeLoadCommand().withTimeout(5));
   NamedCommands.registerCommand("Shoot", new A_ShootCommand().withTimeout(5));
   NamedCommands.registerCommand("Home", new A_HomeAllCommand().withTimeout(5));
