@@ -83,72 +83,28 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     return (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
   }
 
-/**
-   * Gets wanted shooter speed by interpolating between two closest data points
-   * based on distance
-   * 
-   */
-  private double getShooterSpeed() {
-    double closeDistance = shooterSpeeds.floorKey(Constants.k_LLDistanceToAprilTag);
-    System.out.println("close distance: " + shooterSpeeds.floorKey(Constants.k_LLDistanceToAprilTag));
-    double farDistance = shooterSpeeds.ceilingKey(Constants.k_LLDistanceToAprilTag);
-
-    double closeShooter = shooterSpeeds.floorEntry(Constants.k_LLDistanceToAprilTag).getValue();
-
-    double farShooter = shooterSpeeds.ceilingEntry(Constants.k_LLDistanceToAprilTag).getValue();
-
-    //Constants.k_FiringSolutionSpeed = ((farShooter - closeShooter) / (farDistance - closeDistance))* (getDistance() - farDistance) + farShooter;
-
-    return ((farShooter - closeShooter) / (farDistance - closeDistance))* (getDistance() - farDistance) + farShooter;
-  }
-
-  private double getWristAngle() {
-    double closeDistance = wristAngle.floorKey(Constants.k_LLDistanceToAprilTag);
-    double farDistance = wristAngle.ceilingKey(Constants.k_LLDistanceToAprilTag);
-
-    double closeShooter = wristAngle.floorEntry(Constants.k_LLDistanceToAprilTag).getValue();
-
-    double farShooter = wristAngle.ceilingEntry(Constants.k_LLDistanceToAprilTag).getValue();
-
-    //Constants.k_FiringSolutionAngle = ((farShooter - closeShooter) / (farDistance - closeDistance))* (getDistance() - farDistance) + farShooter;
-
-    return ((farShooter - closeShooter) / (farDistance - closeDistance))* (Constants.k_LLDistanceToAprilTag - farDistance) + farShooter;
-  }
-
   @Override
   public void periodic() {
     Constants.k_LLDistanceToAprilTag = getDistance();
-    //System.out.println("LL distance: " + Constants.k_LLDistanceToAprilTag);
 
-    // This method will be called once per scheduler run
+    if (Constants.k_LLDistanceToAprilTag >= 36 && Constants.k_LLDistanceToAprilTag <= 92) {
 
-      //Constants.k_FiringSolutionSpeed = getShooterSpeed();
     double s_closeDistance = shooterSpeeds.floorKey(Constants.k_LLDistanceToAprilTag);
-    //System.out.println("close distance: " + s_closeDistance);
     double s_farDistance = shooterSpeeds.ceilingKey(Constants.k_LLDistanceToAprilTag);
-    //System.out.println("ceiling distance: " + s_farDistance);
-
     double s_closeShooter = shooterSpeeds.floorEntry(Constants.k_LLDistanceToAprilTag).getValue();
-    //System.out.println("close floor Entry; " + s_closeShooter);
-
     double s_farShooter = shooterSpeeds.ceilingEntry(Constants.k_LLDistanceToAprilTag).getValue();
-    //System.out.println("ceiling floor Entry:" + s_farShooter);
-
     Constants.k_FiringSolutionSpeed = ((s_farShooter - s_closeShooter) / (s_farDistance - s_closeDistance))* (Constants.k_LLDistanceToAprilTag - s_farDistance) + s_farShooter;
-    //System.out.println(Constants.k_FiringSolutionSpeed);
-
-      //Constants.k_FiringSolutionAngle = getWristAngle();
 
     double closeDistance = wristAngle.floorKey(Constants.k_LLDistanceToAprilTag);
-
     double farDistance = wristAngle.ceilingKey(Constants.k_LLDistanceToAprilTag);
-
     double closeShooter = wristAngle.floorEntry(Constants.k_LLDistanceToAprilTag).getValue();
-
     double farShooter = wristAngle.ceilingEntry(Constants.k_LLDistanceToAprilTag).getValue();
-
     Constants.k_FiringSolutionAngle = ((farShooter - closeShooter) / (farDistance - closeDistance))* (Constants.k_LLDistanceToAprilTag - farDistance) + farShooter;
-
+    }
+    else {
+      Constants.k_FiringSolutionSpeed = 60;
+      Constants.k_FiringSolutionAngle = 0.137;
+    }
 
   SmartDashboard.putNumber("FSS calculated distance: ", Constants.k_LLDistanceToAprilTag);
   SmartDashboard.putNumber("FSS speed: ", Constants.k_FiringSolutionSpeed);

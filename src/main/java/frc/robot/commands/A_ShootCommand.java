@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.ShootSubsystem;
 
@@ -13,7 +14,7 @@ public class A_ShootCommand extends Command {
   /** Creates a new A_ShootCommand. */
   public A_ShootCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.shootsubsystem);
+    addRequirements(RobotContainer.shootsubsystem, RobotContainer.feedsubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -26,8 +27,10 @@ public class A_ShootCommand extends Command {
   public void execute() {
     new ShootSubsystem().Shoot();
 
-    //put a delay here or do something with isFinished
+    if (Constants.k_shootmotor1speed >= Constants.k_FiringSolutionSpeed) {
+    RobotContainer.feedsubsystem.Feed();
     new WaitCommand(2);
+    }   
   }
   
 
@@ -35,12 +38,12 @@ public class A_ShootCommand extends Command {
   @Override
   public void end(boolean interrupted) {
     RobotContainer.shootsubsystem.Stop();
+    RobotContainer.feedsubsystem.Stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-        return true;
-
+   return true;
   }
 }
