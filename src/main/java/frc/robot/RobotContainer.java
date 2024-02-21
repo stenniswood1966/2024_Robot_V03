@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
@@ -143,9 +144,13 @@ public class RobotContainer {
     //button.onTrue(Commands.race(twoSecCommand, oneSecCommand, threeSecCommand));
     Button_1.onTrue(Commands.race(new IntakeCommand(), new LoadCommand()).withTimeout(5)); //commands run until the NoteisReady variable = true or timeout
 
-    Button_5.onTrue(new A_PrepareToShootCommand());
+    Button_5.onTrue( //static close shoot position
+      new ShoulderPositionCommand(Constants.k_ShoulderShootPosition)
+      .alongWith(new WaitCommand(0.25))
+      .alongWith(new WristPositionCommand(Constants.k_WristShootPosition))
+    );
     
-    Button_6.onTrue(new A_PrepareToShootCommand());
+    Button_6.onTrue(new A_PrepareToShootCommand()); //Use the FSS data to manage shoulder and wrist
 
     Button_10.whileTrue(new OutakeCommand());
 
