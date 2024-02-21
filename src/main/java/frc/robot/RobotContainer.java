@@ -144,13 +144,13 @@ public class RobotContainer {
     //button.onTrue(Commands.race(twoSecCommand, oneSecCommand, threeSecCommand));
     Button_1.onTrue(Commands.race(new IntakeCommand(), new LoadCommand()).withTimeout(5)); //commands run until the NoteisReady variable = true or timeout
 
-    Button_3.onTrue( //static close shoot position
+    Button_3.onTrue( //amp shoot position
       new ShoulderPositionCommand(Constants.k_ShoulderAmpPosition)
       .alongWith(new WaitCommand(0.25))
       .alongWith(new WristPositionCommand(Constants.k_WristAmpPosition))
     );
 
-    Button_5.onTrue( //static close shoot position
+    Button_5.onTrue( //speaker shoot position against subwoofer
       new ShoulderPositionCommand(Constants.k_ShoulderShootPosition)
       .alongWith(new WaitCommand(0.25))
       .alongWith(new WristPositionCommand(Constants.k_WristShootPosition))
