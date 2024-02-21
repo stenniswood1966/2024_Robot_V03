@@ -11,6 +11,7 @@ import frc.robot.RobotContainer;
 import frc.robot.subsystems.ShootSubsystem;
 
 public class A_ShootCommand extends Command {
+  double elapsedTime = 0;
   /** Creates a new A_ShootCommand. */
   public A_ShootCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -20,6 +21,7 @@ public class A_ShootCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    elapsedTime = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -29,8 +31,9 @@ public class A_ShootCommand extends Command {
 
     if (Constants.k_shootmotor1speed >= Constants.k_FiringSolutionSpeed) {
     RobotContainer.feedsubsystem.Feed();
-    new WaitCommand(2);
-    }   
+    elapsedTime = elapsedTime + 1;
+    System.out.println(elapsedTime);
+    }
   }
   
 
@@ -44,6 +47,12 @@ public class A_ShootCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   return true;
+    if (elapsedTime >= 10) {
+      return true;
+    }
+    else {
+      return false;
+    }
+    
   }
 }

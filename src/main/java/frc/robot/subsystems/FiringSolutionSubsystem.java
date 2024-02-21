@@ -101,8 +101,8 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     Constants.k_FiringSolutionAngle = ((farShooter - closeShooter) / (farDistance - closeDistance))* (Constants.k_LLDistanceToAprilTag - farDistance) + farShooter;
     }
     else {
-      Constants.k_FiringSolutionSpeed = 60;
-      Constants.k_FiringSolutionAngle = 0.137;
+      Constants.k_FiringSolutionSpeed = 50;
+      Constants.k_FiringSolutionAngle = 0.140;
     }
 
   SmartDashboard.putNumber("FSS calculated distance: ", Constants.k_LLDistanceToAprilTag);

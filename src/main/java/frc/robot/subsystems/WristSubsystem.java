@@ -96,8 +96,6 @@ motor1.setControl(motorRequest); // Requests the motor to move
   public void enablemotionmagic(double targetpos) {
     // periodic, run Motion Magi with slot 0 configs,
     motor1.setControl(mmReq.withPosition(targetpos).withSlot(0));
-
-
   }
 
   public void disablemotionmagic() {

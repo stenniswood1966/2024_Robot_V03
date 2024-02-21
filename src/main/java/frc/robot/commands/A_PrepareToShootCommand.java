@@ -39,10 +39,11 @@ public class A_PrepareToShootCommand extends Command {
   @Override
   public boolean isFinished() {
     //return false;
-    if (Constants.k_ShoulderMMisMoving && Constants.k_WristMMisMoving) {
+    if (Constants.k_WristMMisMoving && Constants.k_ShoulderMMisMoving) {
       return false;
-    } else {
+    }
+    else {
       return true;
     }
-  }
+   }
 }

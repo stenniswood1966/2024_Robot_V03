@@ -30,9 +30,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Exist"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Exist"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "A_IntakeLoadCommand"
+                }
+              }
+            ]
           }
         }
       ]
