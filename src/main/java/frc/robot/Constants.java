@@ -20,13 +20,13 @@ public class Constants {
     public static boolean k_ShoulderMMisMoving = false;
     public static final double k_ShoulderHomePosition = 2;
     public static final double k_ShoulderShootPosition = 11; //40
-    public static final double k_ShoulderAmpPosition = 40; //this is a guess
+    public static final double k_ShoulderAmpPosition = 11; //this is a guess
 
     //Wrist MM Position
     public static boolean k_WristMMisMoving = false;
     public static double k_WristHomePosition = 0.051;
     public static double k_WristShootPosition = 0.137; //
-    public static double k_WristAmpPosition = 0.3; //this is a quess
+    public static double k_WristAmpPosition = 0.137; //this is a quess
 
     //FiringSolutionSubsystem
     public static double k_LLDistanceToAprilTag = 0.0;

@@ -58,8 +58,8 @@ public class RobotContainer {
   private final XboxController m_operator1Controller = new XboxController(1);
   private JoystickButton Button_1 = new JoystickButton(m_operator1Controller, 1);
   //private JoystickButton Button_2 = new JoystickButton(m_operator1Controller, 2);
-  //private JoystickButton Button_3 = new JoystickButton(m_operator1Controller, 3);
-  private JoystickButton Button_4 = new JoystickButton(m_operator1Controller, 4);
+  private JoystickButton Button_3 = new JoystickButton(m_operator1Controller, 3);
+  //private JoystickButton Button_4 = new JoystickButton(m_operator1Controller, 4);
   private JoystickButton Button_5 = new JoystickButton(m_operator1Controller, 5);
   private JoystickButton Button_6 = new JoystickButton(m_operator1Controller, 6);
   private JoystickButton Button_10 = new JoystickButton(m_operator1Controller, 10);
@@ -143,6 +143,12 @@ public class RobotContainer {
     // Will be a parallel race group that ends after one second with the two and three second commands getting interrupted.
     //button.onTrue(Commands.race(twoSecCommand, oneSecCommand, threeSecCommand));
     Button_1.onTrue(Commands.race(new IntakeCommand(), new LoadCommand()).withTimeout(5)); //commands run until the NoteisReady variable = true or timeout
+
+    Button_3.onTrue( //static close shoot position
+      new ShoulderPositionCommand(Constants.k_ShoulderAmpPosition)
+      .alongWith(new WaitCommand(0.25))
+      .alongWith(new WristPositionCommand(Constants.k_WristAmpPosition))
+    );
 
     Button_5.onTrue( //static close shoot position
       new ShoulderPositionCommand(Constants.k_ShoulderShootPosition)
