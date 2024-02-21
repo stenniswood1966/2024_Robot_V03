@@ -4,9 +4,6 @@
 
 package frc.robot.subsystems;
 
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
-import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.ctre.phoenix6.controls.VelocityVoltage;
@@ -14,10 +11,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.ForwardLimitValue;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-import com.playingwithfusion.TimeOfFlight.Status;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 
 public class ClimbSubsystem extends SubsystemBase {
   public static TalonFX motor1 = new TalonFX(7, "Flurb");
@@ -42,7 +36,6 @@ public class ClimbSubsystem extends SubsystemBase {
     }
 
     }
-  }
  
   public void climb() {
    motor1.set(0.1);
