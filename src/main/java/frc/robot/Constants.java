@@ -36,5 +36,4 @@ public class Constants {
     //shootersubsystem motor speeds
     public static double k_shootmotor1speed = 0.0;
     public static double k_shootmotor2speed = 0.0;
-
 }
