@@ -12,9 +12,10 @@ import com.ctre.phoenix6.signals.ForwardLimitValue;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.generated.TunerConstants;
 
 public class ClimbSubsystem extends SubsystemBase {
-  public static TalonFX motor1 = new TalonFX(7, "Flurb");
+  public static TalonFX motor1 = new TalonFX(7, TunerConstants.kCANbusName);
 
   // class member variable
   final VelocityVoltage m_velocity = new VelocityVoltage(0);

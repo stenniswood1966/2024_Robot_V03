@@ -12,10 +12,11 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.generated.TunerConstants;
 
 public class IntakeSubsystem extends SubsystemBase {
-  private static TalonFX motor1 = new TalonFX(13,"Flurb");
-  private static TalonFX motor2 = new TalonFX(8,"Flurb");
+  private static TalonFX motor1 = new TalonFX(13,TunerConstants.kCANbusName);
+  private static TalonFX motor2 = new TalonFX(8,TunerConstants.kCANbusName);
 
   private CANSparkMax motor3;
   private CANSparkMax motor4;

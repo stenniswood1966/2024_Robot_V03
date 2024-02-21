@@ -13,10 +13,11 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.generated.TunerConstants;
 
 public class ShootSubsystem extends SubsystemBase {
-  public static TalonFX motor1 = new TalonFX(11, "Flurb");
-  public static TalonFX motor2 = new TalonFX(12, "Flurb");
+  public static TalonFX motor1 = new TalonFX(11, TunerConstants.kCANbusName);
+  public static TalonFX motor2 = new TalonFX(12, TunerConstants.kCANbusName);
 
   // class member variable
   final VelocityVoltage m_velocity = new VelocityVoltage(0);

@@ -10,9 +10,10 @@ import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.generated.TunerConstants;
 
 public class FeedSubsystem extends SubsystemBase {
-  private static TalonFX motor1 = new TalonFX(10, "Flurb");
+  private static TalonFX motor1 = new TalonFX(10, TunerConstants.kCANbusName);
   /** Creates a new FeedSubsytem. */
   public FeedSubsystem() {
     var fx_cfg = new TalonFXConfiguration(); // creates a default TalonFx Configuration
