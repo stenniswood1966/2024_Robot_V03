@@ -128,7 +128,6 @@ public class RobotContainer {
 
     //POV buttons slow mode auto rotate to zero
     fieldcentricfacingangle.HeadingController = new PhoenixPIDController(10.0, 0, 0);
-    SendableRegistry.setName(fieldcentricfacingangle.HeadingController, "AutoAlign", "fcfa HeadingController");
     Rotation2d alignangle = Rotation2d.fromDegrees(0); //sets the angle the robot should face to zero
     joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
     joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
