@@ -9,10 +9,9 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
 public class Auto extends Command {
-  double elapsedTime = 0; //counts the number of 20ms cycles that has past
+  double elapsedTime = 0; //counts the number of 20ms cycles that have occured
   /** Creates a new A_Steven. */
   public Auto() {
-
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.feedsubsystem, RobotContainer.intakesubsystem, RobotContainer.shootsubsystem, RobotContainer.shouldersubsystem, RobotContainer.wristsubsystem);
   }
