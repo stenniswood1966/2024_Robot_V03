@@ -179,8 +179,7 @@ public class RobotContainer {
       
     //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
-    joystick2.b().whileTrue(new A_PrepareToShootCommand());
-    joystick2.y().whileTrue(new A_HomeAllCommand());
+    joystick2.b().whileTrue(new A_Steven());
 
 
     /* Bindings for drivetrain characterization */
@@ -198,6 +197,7 @@ public class RobotContainer {
   NamedCommands.registerCommand("A_IntakeLoadCommand", new A_IntakeLoadCommand().withTimeout(5));
   NamedCommands.registerCommand("A_ShootCommand", new A_ShootCommand().withTimeout(5));
   NamedCommands.registerCommand("A_HomeAllCommand", new A_HomeAllCommand().withTimeout(5));
+  NamedCommands.registerCommand("A_Steven", new A_Steven().withTimeout(5));
 }
 
   public RobotContainer() {
