@@ -179,7 +179,7 @@ public class RobotContainer {
       
     //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
-    joystick2.b().whileTrue(new Auto());
+    joystick2.b().whileTrue(new Auto2());
 
 
     /* Bindings for drivetrain characterization */
