@@ -19,16 +19,16 @@ public class A_PrepareToShootCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //System.out.println("PrepareToShootCMD");
-    RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
-    new WaitCommand(0.25);
-    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
+    //System.out.println("PrepareToShootCMD");
+    RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
+    new WaitCommand(0.25);
+    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
   }
 
   // Called once the command ends or is interrupted.
