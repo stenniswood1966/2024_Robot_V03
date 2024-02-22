@@ -27,23 +27,31 @@ public class A_Steven extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if (elapsedTime >= 0 && elapsedTime <= 5) {
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
-    new WaitCommand(0.25); //let shoulder start moving before wrist does
-    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
-    new WaitCommand(.25); //let wrist get to position
+    }
 
+    if (elapsedTime >= 25 && elapsedTime <= 30) {
+    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
+    }
+  
+    if (elapsedTime >= 75 && elapsedTime <= 100){
     RobotContainer.shootsubsystem.Shoot();
     if (Constants.k_shootmotor1speed >= Constants.k_FiringSolutionSpeed) {
     RobotContainer.feedsubsystem.Feed();
-    elapsedTime = elapsedTime + 1;
+    }
+  }
+
+    if (elapsedTime >= 100) {
+      RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristHomePosition);
     }
 
-    if (elapsedTime >= 8) {
-      RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristHomePosition);
-      new WaitCommand(0.25);
+    if (elapsedTime >= 125){
       RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderHomePosition);
     }
 
+    elapsedTime = elapsedTime + 1;
+    System.out.println(elapsedTime);
   }
 
   // Called once the command ends or is interrupted.
@@ -56,7 +64,7 @@ public class A_Steven extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (elapsedTime >= 9) {
+    if (elapsedTime >= 150) {
       return true;
     }
     else {
