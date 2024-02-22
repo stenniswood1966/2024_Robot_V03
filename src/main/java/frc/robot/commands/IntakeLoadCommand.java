@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class A_IntakeLoadCommand extends Command {
+public class IntakeLoadCommand extends Command {
   /** Creates a new A_IntakeCommand. */
-  public A_IntakeLoadCommand() {
+  public IntakeLoadCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intakesubsystem, RobotContainer.feedsubsystem);
   }

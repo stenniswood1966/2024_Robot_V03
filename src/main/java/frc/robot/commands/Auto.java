@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class A_Steven extends Command {
+public class Auto extends Command {
   double elapsedTime = 0; //counts the number of 20ms cycles that has past
   /** Creates a new A_Steven. */
-  public A_Steven() {
+  public Auto() {
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.feedsubsystem, RobotContainer.intakesubsystem, RobotContainer.shootsubsystem, RobotContainer.shouldersubsystem, RobotContainer.wristsubsystem);

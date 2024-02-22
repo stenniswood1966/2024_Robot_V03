@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class A_PrepareToShootCommand extends Command {
+public class PrepareToShootCommand extends Command {
   /** Creates a new PrepareToShoot. */
-  public A_PrepareToShootCommand() {
+  public PrepareToShootCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shouldersubsystem, RobotContainer.wristsubsystem);
   }

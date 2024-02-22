@@ -156,7 +156,7 @@ public class RobotContainer {
       .alongWith(new WristPositionCommand(Constants.k_WristShootPosition))
     );
     
-    Button_6.onTrue(new A_PrepareToShootCommand()); //Use the FSS data to manage shoulder and wrist
+    Button_6.onTrue(new PrepareToShootCommand()); //Use the FSS data to manage shoulder and wrist
 
     Button_10.whileTrue(new OutakeCommand());
 
@@ -179,7 +179,7 @@ public class RobotContainer {
       
     //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
-    joystick2.b().whileTrue(new A_Steven());
+    joystick2.b().whileTrue(new Auto());
 
 
     /* Bindings for drivetrain characterization */
@@ -193,8 +193,8 @@ public class RobotContainer {
 
   private void namedcommands() {
   // Register Named Commands for pathplanner to use during autonomous
-  NamedCommands.registerCommand("A_PrepareToShootCommand", new A_PrepareToShootCommand().withTimeout(5));
-  NamedCommands.registerCommand("A_Steven", new A_Steven().withTimeout(5));
+  NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
+  NamedCommands.registerCommand("Auto Shoot", new Auto().withTimeout(5));
 }
 
   public RobotContainer() {
