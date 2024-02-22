@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 2,
-      "y": 7.0
+      "x": 0.82,
+      "y": 4.66
     },
-    "rotation": 0
+    "rotation": -77.44999999999999
   },
   "command": {
     "type": "sequential",
@@ -24,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Steven1"
+                  "pathName": "Start - 2"
                 }
               },
               {
@@ -39,7 +39,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Steven2"
+            "pathName": "2 - Line"
           }
         },
         {
