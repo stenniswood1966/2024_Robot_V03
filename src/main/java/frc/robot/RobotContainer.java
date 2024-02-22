@@ -178,7 +178,7 @@ public class RobotContainer {
       );
       
     //joystick2 used for testing manual commands
-    joystick2.a().whileTrue(new WristManualCommand());
+    joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
     joystick2.b().whileTrue(new A_PrepareToShootCommand());
     joystick2.y().whileTrue(new A_HomeAllCommand());
 

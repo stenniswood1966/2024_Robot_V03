@@ -32,7 +32,6 @@ public class A_ShootCommand extends Command {
     if (Constants.k_shootmotor1speed >= Constants.k_FiringSolutionSpeed) {
     RobotContainer.feedsubsystem.Feed();
     elapsedTime = elapsedTime + 1;
-    System.out.println(elapsedTime);
     }
   }
   
@@ -47,7 +46,7 @@ public class A_ShootCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (elapsedTime >= 10) {
+    if (elapsedTime >= 8) {
       return true;
     }
     else {
