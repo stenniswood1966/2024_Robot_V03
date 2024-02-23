@@ -35,6 +35,27 @@
       }
     }
   },
+  "NetworkTables": {
+    "transitory": {
+      "Drive": {
+        "open": true
+      },
+      "FMSInfo": {
+        "open": true
+      },
+      "LiveWindow": {
+        ".status": {
+          "open": true
+        }
+      },
+      "Pose": {
+        "double[]##v_/Pose/robotPose": {
+          "open": true
+        },
+        "open": true
+      }
+    }
+  },
   "NetworkTables Info": {
     "visible": true
   },
