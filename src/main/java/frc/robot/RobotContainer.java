@@ -194,7 +194,7 @@ public class RobotContainer {
   private void namedcommands() {
   // Register Named Commands for pathplanner to use during autonomous
   NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
-  NamedCommands.registerCommand("Auto Shoot", new Auto().withTimeout(5));
+  NamedCommands.registerCommand("Auto Shoot", new Auto2().withTimeout(5));
 }
 
   public RobotContainer() {

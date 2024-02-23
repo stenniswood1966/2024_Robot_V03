@@ -41,7 +41,7 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
     /* Red alliance sees forward as 180 degrees (toward blue alliance wall) */
     private final Rotation2d RedAlliancePerspectiveRotation = Rotation2d.fromDegrees(180); //180
     /* Keep track if we've ever applied the operator perspective before or not */
-    private boolean hasAppliedOperatorPerspective = false;
+    private boolean hasAppliedOperatorPerspective = false; //false
 
     private final SwerveRequest.ApplyChassisSpeeds AutoRequest = new SwerveRequest.ApplyChassisSpeeds();
 
