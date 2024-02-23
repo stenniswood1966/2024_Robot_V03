@@ -39,6 +39,7 @@ public class RobotContainer {
   public static WristSubsystem wristsubsystem = new WristSubsystem();
   public static FiringSolutionSubsystem firingsolutionsubsystem = new FiringSolutionSubsystem();
   public static ClimbSubsystem climbsubsystem = new ClimbSubsystem();
+  public static LEDSubsystem ledsubsystem = new LEDSubsystem();
 
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
