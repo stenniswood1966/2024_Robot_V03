@@ -10,6 +10,7 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -129,7 +130,7 @@ public class RobotContainer {
 
     //POV buttons slow mode auto rotate to zero
     fieldcentricfacingangle.HeadingController = new PhoenixPIDController(10.0, 0, 0);
-    Rotation2d alignangle = Rotation2d.fromDegrees(0); //sets the angle the robot should face to zero
+    Rotation2d alignangle = Rotation2d.fromDegrees(isAllianceRed()); //sets the angle the robot should face to zero
     joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
     joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
     joystick.pov(90).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(-POVSpeed).withTargetDirection(alignangle)));
@@ -213,5 +214,18 @@ public class RobotContainer {
     /* First put the drivetrain into auto run mode, then run the auto */
     //return runAuto;
     return autochooser.getSelected();
+  }
+
+  public int isAllianceRed() {
+    // Boolean supplier that controls when the path will be mirrored for the red alliance
+    // This will flip the path being followed to the red side of the field.
+    // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+
+    var alliance = DriverStation.getAlliance();
+    if (alliance.get() == DriverStation.Alliance.Red) {
+      System.out.println("180");
+      return 180;
+    }
+    return 0;
   }
 }
