@@ -179,7 +179,7 @@ public class RobotContainer {
       
     //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
-    joystick2.b().whileTrue(new Auto2());
+    joystick2.b().whileTrue(new Auto());
 
 
     /* Bindings for drivetrain characterization */
@@ -194,7 +194,7 @@ public class RobotContainer {
   private void namedcommands() {
   // Register Named Commands for pathplanner to use during autonomous
   NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
-  NamedCommands.registerCommand("Auto Shoot", new Auto2().withTimeout(5));
+  NamedCommands.registerCommand("Auto Shoot", new Auto().withTimeout(5));
 }
 
   public RobotContainer() {

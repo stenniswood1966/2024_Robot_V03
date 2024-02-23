@@ -27,29 +27,31 @@ public class Auto extends Command {
   public void execute() {
     if (elapsedTime >= 0 && elapsedTime <= 5) {
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
+    RobotContainer.shootsubsystem.Shoot();
+    System.out.println("shoulder to position and shooter motors spinning up");
     }
 
     if (elapsedTime >= 25 && elapsedTime <= 30) {
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
+    System.out.println("wrist to position");
     }
   
-    if (elapsedTime >= 75 && elapsedTime <= 100){
-    RobotContainer.shootsubsystem.Shoot();
-    if (Constants.k_shootmotor1speed >= Constants.k_FiringSolutionSpeed) {
-    RobotContainer.feedsubsystem.Feed();
-    }
+    if (!Constants.k_WristMMisMoving && !Constants.k_ShoulderMMisMoving){ //shoot when wrist and shoulder stop moving
+      System.out.println("shoulder and wrist stopped moving");
+      if (Constants.k_shootmotor1speed >= Constants.k_FiringSolutionSpeed) { //wait until shooter is up to speed
+      RobotContainer.feedsubsystem.Feed();
+      System.out.println("feeding active");
+      }
     }
 
-    if (elapsedTime >= 100) {
+    if (!Constants.k_NoteisReady) { //no note in shooter start to home wrist and shoulder
       RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristHomePosition);
-    }
-
-    if (elapsedTime >= 125){
       RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderHomePosition);
+      System.out.println("home wrist and shoulder");
     }
 
     elapsedTime = elapsedTime + 1;
-    //System.out.println(elapsedTime);
+    System.out.println(elapsedTime);
   }
 
   // Called once the command ends or is interrupted.
@@ -57,6 +59,7 @@ public class Auto extends Command {
   public void end(boolean interrupted) {
     RobotContainer.shootsubsystem.Stop();
     RobotContainer.feedsubsystem.Stop();
+    System.out.println("Auto stopped");
   }
 
   // Returns true when the command should end.

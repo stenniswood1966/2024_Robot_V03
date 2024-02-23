@@ -65,8 +65,8 @@ public class ShootSubsystem extends SubsystemBase {
     //motor2.set(0.2);
 
     m_velocity.Slot = 0;
-    motor1.setControl(m_velocity.withVelocity(6380 * 0.2)); //run at 20% max speed
-    motor2.setControl(m_velocity.withVelocity(6380 * 0.2));
+    motor1.setControl(m_velocity.withVelocity(30));
+    motor2.setControl(m_velocity.withVelocity(30));
   }
 
   public void Stop() {
