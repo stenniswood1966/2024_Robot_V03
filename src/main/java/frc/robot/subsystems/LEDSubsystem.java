@@ -39,10 +39,10 @@ public class LEDSubsystem extends SubsystemBase {
     }
 
     public void red() {
-        m_candle.setLEDs(255, 0, 0, 0, 0, 8);
+        m_candle.setLEDs(255, 0, 0, 0, 0, LedCount);
     }
 
     public void green() {
-        m_candle.setLEDs(0, 255, 0, 0, 0, 8);
+        m_candle.setLEDs(0, 255, 0, 0, 0, LedCount);
     }
 }
