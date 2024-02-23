@@ -9,7 +9,6 @@ import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -52,27 +51,18 @@ public class ShootSubsystem extends SubsystemBase {
   }
 
   public void Shoot() {
-    //motor1.set(0.6);
-    //motor2.set(0.6);
-
     m_velocity.Slot = 0;
     motor1.setControl(m_velocity.withVelocity(Constants.k_FiringSolutionSpeed));
     motor2.setControl(m_velocity.withVelocity(Constants.k_FiringSolutionSpeed));
   }
 
   public void PreShoot() {
-    //motor1.set(0.2);
-    //motor2.set(0.2);
-
     m_velocity.Slot = 0;
     motor1.setControl(m_velocity.withVelocity(30));
     motor2.setControl(m_velocity.withVelocity(30));
   }
 
   public void Stop() {
-    //motor1.set(0);
-    //motor2.set(0);
-
     m_velocity.Slot = 0;
     motor1.setControl(m_velocity.withVelocity(0));
     motor2.setControl(m_velocity.withVelocity(0));
