@@ -14,6 +14,7 @@ import com.ctre.phoenix.led.CANdle.VBatOutputMode;
 public class LEDSubsystem extends SubsystemBase {
     private final CANdle m_candle = new CANdle(0, "rio");
     private final int LedCount = 300;
+    private boolean k_NoteisReadyPast = false;
  
     public LEDSubsystem() {
         CANdleConfiguration configAll = new CANdleConfiguration();
@@ -30,13 +31,18 @@ public class LEDSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
-        if (Constants.k_NoteisReady) {
+        // Only change LEDs if needed.
+        if (Constants.k_NoteisReady && !k_NoteisReadyPast) {
             green();
-        }
-        else {
+            k_NoteisReadyPast = Constants.k_NoteisReady;
+        } else if (!Constants.k_NoteisReady && k_NoteisReadyPast) {
             red();
+            k_NoteisReadyPast = Constants.k_NoteisReady;
+        } else {
+            k_NoteisReadyPast = Constants.k_NoteisReady;
         }
     }
+
 
     public void red() {
         m_candle.setLEDs(255, 0, 0, 0, 0, LedCount);
@@ -45,4 +51,5 @@ public class LEDSubsystem extends SubsystemBase {
     public void green() {
         m_candle.setLEDs(0, 255, 0, 0, 0, LedCount);
     }
+
 }
