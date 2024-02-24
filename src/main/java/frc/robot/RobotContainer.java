@@ -122,7 +122,7 @@ public class RobotContainer {
       .andThen(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
       );
     */
-    joystick.y().whileTrue(new Auto());
+    joystick.y().whileTrue(new AutoShootCommand());
 
     // reset the field-centric heading on left bumper press
     joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
@@ -191,7 +191,7 @@ public class RobotContainer {
       
     //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
-    joystick2.b().whileTrue(new Auto());
+    joystick2.b().whileTrue(new AutoShootCommand());
     joystick2.x().whileTrue(new ClimbCommand());
 
 
@@ -207,7 +207,7 @@ public class RobotContainer {
   private void namedcommands() {
   // Register Named Commands for pathplanner to use during autonomous
   NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
-  NamedCommands.registerCommand("Auto Shoot", new Auto().withTimeout(5));
+  NamedCommands.registerCommand("Auto Shoot", new AutoShootCommand().withTimeout(5));
 }
 
   public RobotContainer() {
