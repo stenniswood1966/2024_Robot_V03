@@ -23,26 +23,26 @@ public class FiringSolutionSubsystem extends SubsystemBase {
   }
 
   private void setUpSpeedLookUpTable() {
-    shooterSpeeds.put(0.0, (double) 40);
-    shooterSpeeds.put(38.0, (double) 50);
-    shooterSpeeds.put(40.0, (double) 50);
-    shooterSpeeds.put(46.0, (double) 51);
-    shooterSpeeds.put(51.0, (double) 52);
-    shooterSpeeds.put(60.0, (double) 54);
+    shooterSpeeds.put(0.0, (double) 45);
+    shooterSpeeds.put(38.0, (double) 45);
+    shooterSpeeds.put(40.0, (double) 45);
+    shooterSpeeds.put(46.0, (double) 45);
+    shooterSpeeds.put(51.0, (double) 45);
+    shooterSpeeds.put(60.0, (double) 45);
     shooterSpeeds.put(65.0, (double) 55);
     shooterSpeeds.put(70.0, (double) 55);
     shooterSpeeds.put(75.0, (double) 56);
-    shooterSpeeds.put(81.0, (double) 57);
-    shooterSpeeds.put(85.0, (double) 58);
-    shooterSpeeds.put(90.0, (double) 59);
-    shooterSpeeds.put(92.0, (double) 59);
+    shooterSpeeds.put(81.0, (double) 60);
+    shooterSpeeds.put(85.0, (double) 60);
+    shooterSpeeds.put(90.0, (double) 60);
+    shooterSpeeds.put(92.0, (double) 60);
     shooterSpeeds.put(96.0, (double) 60);
     shooterSpeeds.put(999.0, (double) 60);
   }
 
     private void setUpWristLookUpTable() {
     wristAngle.put(0.0, (double) 0.130);
-    wristAngle.put(38.0, (double) 0.139);
+    wristAngle.put(38.0, (double) 0.135);
     wristAngle.put(40.0, (double) 0.140);
     wristAngle.put(46.0, (double) 0.145);
     wristAngle.put(51.0, (double) 0.150);
@@ -50,10 +50,10 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     wristAngle.put(65.0, (double) 0.161);
     wristAngle.put(70.0, (double) 0.166);
     wristAngle.put(75.0, (double) 0.174);
-    wristAngle.put(81.0, (double) 0.187);
-    wristAngle.put(85.0, (double) 0.193);
-    wristAngle.put(90.0, (double) 0.193);
-    wristAngle.put(92.0, (double) 0.193);
+    wristAngle.put(81.0, (double) 0.180);
+    wristAngle.put(85.0, (double) 0.185);
+    wristAngle.put(90.0, (double) 0.185);
+    wristAngle.put(92.0, (double) 0.185);
     wristAngle.put(96.0, (double) 0.192);
     wristAngle.put(999.0, (double) 0.192);
   }
@@ -101,8 +101,8 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     Constants.k_FiringSolutionAngle = ((farShooter - closeShooter) / (farDistance - closeDistance))* (Constants.k_LLDistanceToAprilTag - farDistance) + farShooter;
     }
     else {
-      Constants.k_FiringSolutionSpeed = 50;
-      Constants.k_FiringSolutionAngle = 0.140;
+      Constants.k_FiringSolutionSpeed = 45;
+      Constants.k_FiringSolutionAngle = 0.135;
     }
 
   SmartDashboard.putNumber("FSS calculated distance: ", Constants.k_LLDistanceToAprilTag);
