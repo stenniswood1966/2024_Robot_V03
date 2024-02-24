@@ -47,10 +47,10 @@ public class WristSubsystem extends SubsystemBase {
 
     fx_cfg.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
     fx_cfg.MotorOutput.NeutralMode = NeutralModeValue.Brake; // set brake after tuning
-    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = false;
-    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitEnable = false;
-    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitThreshold = 0.710; //use absolute position of cancoder in tuner x
-    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 0.340;
+    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = true;
+    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitEnable = true;
+    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitThreshold = 0.407; //use absolute position of cancoder in tuner x
+    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 0.041;
 
     /* Configure current limits */
     MotionMagicConfigs mm = new MotionMagicConfigs(); //creates a default motion magic congiguration

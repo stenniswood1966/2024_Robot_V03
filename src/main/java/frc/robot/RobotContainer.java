@@ -64,6 +64,7 @@ public class RobotContainer {
   //private JoystickButton Button_4 = new JoystickButton(m_operator1Controller, 4);
   private JoystickButton Button_5 = new JoystickButton(m_operator1Controller, 5);
   private JoystickButton Button_6 = new JoystickButton(m_operator1Controller, 6);
+  private JoystickButton Button_8 = new JoystickButton(m_operator1Controller, 8);
   private JoystickButton Button_10 = new JoystickButton(m_operator1Controller, 10);
   private JoystickButton Button_20 = new JoystickButton(m_operator1Controller, 20);
   private JoystickButton Button_21 = new JoystickButton(m_operator1Controller, 21);
@@ -112,6 +113,7 @@ public class RobotContainer {
                                         .whileTrue(new AutoAlignCommand(drivetrain));
 
     //shoot button
+    /*
     joystick.y().whileTrue(
       new ShootCommand()
       .alongWith(new FeedCommand()))
@@ -119,6 +121,8 @@ public class RobotContainer {
       .withTimeout(0.25)
       .andThen(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
       );
+    */
+    joystick.y().whileTrue(new Auto());
 
     // reset the field-centric heading on left bumper press
     joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
@@ -160,6 +164,12 @@ public class RobotContainer {
     
     Button_6.onTrue(new PrepareToShootCommand()); //Use the FSS data to manage shoulder and wrist
 
+    Button_8.whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
+                                        .withVelocityY(-joystick.getLeftX() * MaxSpeed)
+                                        .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
+                                        ).ignoringDisable(true))
+                                        .whileTrue(new AutoAlignCommand(drivetrain));
+
     Button_10.whileTrue(new OutakeCommand());
 
     Button_20.whileTrue(new ShoulderManualCommand().alongWith(new WristManualCommand())); //stops MM from running
@@ -182,6 +192,7 @@ public class RobotContainer {
     //joystick2 used for testing manual commands
     joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
     joystick2.b().whileTrue(new Auto());
+    joystick2.x().whileTrue(new ClimbCommand());
 
 
     /* Bindings for drivetrain characterization */

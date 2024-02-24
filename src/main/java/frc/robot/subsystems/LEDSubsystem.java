@@ -13,7 +13,7 @@ import com.ctre.phoenix.led.CANdle.VBatOutputMode;
 
 public class LEDSubsystem extends SubsystemBase {
     private final CANdle m_candle = new CANdle(0, "rio");
-    private final int LedCount = 300;
+    private final int LedCount = 70;
     private boolean k_NoteisReadyPast = false;
  
     public LEDSubsystem() {
@@ -21,9 +21,11 @@ public class LEDSubsystem extends SubsystemBase {
         configAll.statusLedOffWhenActive = false;
         configAll.disableWhenLOS = false;
         configAll.stripType = LEDStripType.GRB;
-        configAll.brightnessScalar = 0.1;
+        configAll.brightnessScalar = 0.75;
         configAll.vBatOutputMode = VBatOutputMode.Modulated;
         m_candle.configAllSettings(configAll, 100);
+
+        startup();
     }
 
   
@@ -50,6 +52,10 @@ public class LEDSubsystem extends SubsystemBase {
 
     public void green() {
         m_candle.setLEDs(0, 255, 0, 0, 0, LedCount);
+    }
+
+    public void startup() {
+        m_candle.setLEDs(255, 255, 0, 0, 0, 70);
     }
 
 }

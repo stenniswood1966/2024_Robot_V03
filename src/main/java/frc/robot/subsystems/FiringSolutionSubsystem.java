@@ -23,21 +23,21 @@ public class FiringSolutionSubsystem extends SubsystemBase {
   }
 
   private void setUpSpeedLookUpTable() {
-    shooterSpeeds.put(0.0, (double) 50);
-    shooterSpeeds.put(38.0, (double) 60);
-    shooterSpeeds.put(40.0, (double) 60);
-    shooterSpeeds.put(46.0, (double) 61);
-    shooterSpeeds.put(51.0, (double) 62);
-    shooterSpeeds.put(60.0, (double) 64);
-    shooterSpeeds.put(65.0, (double) 65);
-    shooterSpeeds.put(70.0, (double) 65);
-    shooterSpeeds.put(75.0, (double) 66);
-    shooterSpeeds.put(81.0, (double) 67);
-    shooterSpeeds.put(85.0, (double) 68);
-    shooterSpeeds.put(90.0, (double) 69);
-    shooterSpeeds.put(92.0, (double) 69);
-    shooterSpeeds.put(96.0, (double) 70);
-    shooterSpeeds.put(999.0, (double) 70);
+    shooterSpeeds.put(0.0, (double) 40);
+    shooterSpeeds.put(38.0, (double) 50);
+    shooterSpeeds.put(40.0, (double) 50);
+    shooterSpeeds.put(46.0, (double) 51);
+    shooterSpeeds.put(51.0, (double) 52);
+    shooterSpeeds.put(60.0, (double) 54);
+    shooterSpeeds.put(65.0, (double) 55);
+    shooterSpeeds.put(70.0, (double) 55);
+    shooterSpeeds.put(75.0, (double) 56);
+    shooterSpeeds.put(81.0, (double) 57);
+    shooterSpeeds.put(85.0, (double) 58);
+    shooterSpeeds.put(90.0, (double) 59);
+    shooterSpeeds.put(92.0, (double) 59);
+    shooterSpeeds.put(96.0, (double) 60);
+    shooterSpeeds.put(999.0, (double) 60);
   }
 
     private void setUpWristLookUpTable() {
