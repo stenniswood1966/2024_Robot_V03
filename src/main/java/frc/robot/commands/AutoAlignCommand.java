@@ -5,12 +5,16 @@
 package frc.robot.commands;
 
 import com.ctre.phoenix6.mechanisms.swerve.SwerveDrivetrain.SwerveDriveState;
+
+import edu.wpi.first.hal.simulation.RoboRioDataJNI;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.CommandSwerveDrivetrain;
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
+import frc.robot.RobotContainer;
 
 public class AutoAlignCommand extends Command {
   double tx = 0;
@@ -31,8 +35,11 @@ public class AutoAlignCommand extends Command {
   public void execute() {
       tx = LimelightHelpers.getTX("limelight");
       SwerveDriveState pose = _drivetrain.getState();
+      var alliance = DriverStation.getAlliance();
 
-      if (tx <= 25) {
+    if (alliance.get() == DriverStation.Alliance.Blue) {
+
+      if (tx <= 25) { //blue alliance
         Constants.k_steering_target = new Rotation2d(Math.toRadians(pose.Pose.getRotation().getDegrees() - tx));
         SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees() - tx);
       }
@@ -40,10 +47,19 @@ public class AutoAlignCommand extends Command {
         Constants.k_steering_target = new Rotation2d(Math.toRadians(pose.Pose.getRotation().getDegrees()));
         SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());
       }
-
+    } else { //Red alliance
+      if (tx <= 25) {
+        Constants.k_steering_target = new Rotation2d(Math.toRadians(pose.Pose.getRotation().getDegrees() - tx + 180));
+        SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees() - tx + 180);
+      }
+      else {
+        Constants.k_steering_target = new Rotation2d(Math.toRadians(pose.Pose.getRotation().getDegrees()));
+        SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());
+      }
+    }
       
-     // System.out.println("limelight: " + tx);
-    //System.out.println(_drivetrain.getState().Pose.getRotation().getDegrees());
+    System.out.println("limelight: " + tx);
+    System.out.println("Rotation2d: " +_drivetrain.getState().Pose.getRotation().getDegrees());
   }
 
   // Called once the command ends or is interrupted.

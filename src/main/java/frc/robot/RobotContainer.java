@@ -234,9 +234,11 @@ public class RobotContainer {
 
     var alliance = DriverStation.getAlliance();
     if (alliance.get() == DriverStation.Alliance.Red) {
-      //System.out.println("180");
+      System.out.println("Red" + 180);
       return 180;
-    }
+    } else {
+      System.out.println("Blue" + 0);
     return 0;
+    }
   }
 }
