@@ -29,6 +29,7 @@ public class RobotContainer {
   private double MinSpeed = TunerConstants.kSpeedAt12VoltsMps / 2; // min speed used during go slow
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
   private double POVSpeed = TunerConstants.kSpeedAt12VoltsMps / 6; //min speed used with POV buttons
+  private Rotation2d alignangle = Rotation2d.fromDegrees(0);
 
 
   //subsystems used
@@ -134,7 +135,7 @@ public class RobotContainer {
 
     //POV buttons slow mode auto rotate to zero
     fieldcentricfacingangle.HeadingController = new PhoenixPIDController(10.0, 0, 0);
-    Rotation2d alignangle = Rotation2d.fromDegrees(isAllianceRed()); //sets the angle the robot should face to zero
+    //Rotation2d alignangle = Rotation2d.fromDegrees(isAllianceRed()); //sets the angle the robot should face to zero
     joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
     joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
     joystick.pov(90).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(-POVSpeed).withTargetDirection(alignangle)));
@@ -213,6 +214,7 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
     namedcommands(); //pathplanner namedcommands
+    isAllianceRed();
 
     //pathplanner sendablechooser
     autochooser = AutoBuilder.buildAutoChooser("None");
@@ -227,18 +229,16 @@ public class RobotContainer {
     return autochooser.getSelected();
   }
 
-  public int isAllianceRed() {
-    // Boolean supplier that controls when the path will be mirrored for the red alliance
-    // This will flip the path being followed to the red side of the field.
-    // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
-
+  public Rotation2d isAllianceRed() {
     var alliance = DriverStation.getAlliance();
     if (alliance.get() == DriverStation.Alliance.Red) {
-      System.out.println("Red" + 180);
-      return 180;
-    } else {
-      System.out.println("Blue" + 0);
-    return 0;
+      //System.out.println("Red" + 180);
+      Rotation2d alignangle = Rotation2d.fromDegrees(180);
+      } else {
+      //System.out.println("Blue" + 0);
+      Rotation2d alignangle = Rotation2d.fromDegrees(0);
     }
+    System.out.println("alignangle: " + alignangle);
+    return alignangle;
   }
 }
