@@ -209,7 +209,10 @@ public class RobotContainer {
   // Register Named Commands for pathplanner to use during autonomous
   NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
   NamedCommands.registerCommand("Auto Shoot", new AutoShootCommand().withTimeout(5));
-}
+  NamedCommands.registerCommand("Preload_Shoot", new Auto_Preload_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()));
+  NamedCommands.registerCommand("Position2_Shoot", new Auto_Pos2_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()));
+  NamedCommands.registerCommand("Position1_Shoot", new Auto_Pos1_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()));
+  }
 
   public RobotContainer() {
     configureBindings();

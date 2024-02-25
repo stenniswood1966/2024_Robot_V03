@@ -27,7 +27,7 @@ public class AutoShootCommand extends Command {
   public void execute() {
     if (elapsedTime >= 0 && elapsedTime <= 5) {
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
-    RobotContainer.shootsubsystem.Shoot();
+    RobotContainer.shootsubsystem.Shoot(Constants.k_FiringSolutionSpeed);
     System.out.println("shoulder to position and shooter motors spinning up");
     }
 

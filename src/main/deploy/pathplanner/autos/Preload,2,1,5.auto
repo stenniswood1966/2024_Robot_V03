@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Auto Shoot"
+            "name": "Preload_Shoot"
           }
         },
         {
@@ -39,7 +39,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Auto Shoot"
+            "name": "Position2_Shoot"
           }
         },
         {
@@ -64,7 +64,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Auto Shoot"
+            "name": "Position1_Shoot"
           }
         },
         {

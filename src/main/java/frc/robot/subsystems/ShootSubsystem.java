@@ -50,10 +50,10 @@ public class ShootSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Shooter motor2 velocity: ", Constants.k_shootmotor2speed);
   }
 
-  public void Shoot() {
+  public void Shoot(double speed) {
     m_velocity.Slot = 0;
-    motor1.setControl(m_velocity.withVelocity(Constants.k_FiringSolutionSpeed));
-    motor2.setControl(m_velocity.withVelocity(Constants.k_FiringSolutionSpeed));
+    motor1.setControl(m_velocity.withVelocity(speed));
+    motor2.setControl(m_velocity.withVelocity(speed));
   }
 
   public void PreShoot() {

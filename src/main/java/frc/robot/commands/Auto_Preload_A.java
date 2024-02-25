@@ -2,15 +2,15 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.AutonTesting;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class Preload1 extends Command {
+public class Auto_Preload_A extends Command {
   /** Creates a new A1. */
-  public Preload1() {
+  public Auto_Preload_A() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shootsubsystem, RobotContainer.shouldersubsystem, RobotContainer.wristsubsystem);
   }
@@ -18,7 +18,7 @@ public class Preload1 extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shootsubsystem.PreShoot();
+    RobotContainer.shootsubsystem.Shoot(45);
     RobotContainer.shouldersubsystem.enablemotionmagic(11);
     RobotContainer.wristsubsystem.enablemotionmagic(0.137);
   }
@@ -34,7 +34,7 @@ public class Preload1 extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (!Constants.k_ShoulderMMisMoving && !Constants.k_WristMMisMoving && Constants.k_shootmotor1speed >= 25) {
+    if (!Constants.k_ShoulderMMisMoving && !Constants.k_WristMMisMoving && Constants.k_shootmotor1speed >= 45) {
       return true;
     } else {
       return false;
