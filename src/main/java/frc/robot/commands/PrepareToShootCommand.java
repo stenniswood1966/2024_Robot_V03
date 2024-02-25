@@ -27,7 +27,7 @@ public class PrepareToShootCommand extends Command {
   public void execute() {
     //System.out.println("PrepareToShootCMD");
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
-    new WaitCommand(0.25);
+    //new WaitCommand(0.5);
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
   }
 

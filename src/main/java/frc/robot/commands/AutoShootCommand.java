@@ -31,7 +31,7 @@ public class AutoShootCommand extends Command {
     System.out.println("shoulder to position and shooter motors spinning up");
     }
 
-    if (elapsedTime >= 15 && elapsedTime <= 20) { //was 25 and 30
+    if (elapsedTime >= 10 && elapsedTime <= 15) { //was 15 and 20
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
     System.out.println("wrist to position");
     }
@@ -65,7 +65,8 @@ public class AutoShootCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (elapsedTime >= 150) {
+    if (elapsedTime >= 100) { //unless we speed up the arm wrist leave this at 100
+    
       return true;
     }
     else {

@@ -215,6 +215,7 @@ public class RobotContainer {
     configureBindings();
     namedcommands(); //pathplanner namedcommands
     isAllianceRed();
+    //Commands.run(shootsubsystem::PreShoot, shootsubsystem);
 
     //pathplanner sendablechooser
     autochooser = AutoBuilder.buildAutoChooser("None");

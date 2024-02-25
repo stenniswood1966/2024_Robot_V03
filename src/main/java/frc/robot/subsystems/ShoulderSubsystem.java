@@ -63,7 +63,7 @@ public class ShoulderSubsystem extends SubsystemBase {
     // set Motion Magic settings
     var motionMagicConfigs = fx_cfg.MotionMagic;
     motionMagicConfigs.MotionMagicCruiseVelocity = 60; // Target cruise velocity of 80 rps
-    motionMagicConfigs.MotionMagicAcceleration = 70; // Target acceleration of 160 rps/s (0.5 seconds)
+    motionMagicConfigs.MotionMagicAcceleration = 60; // Target acceleration of 160 rps/s (0.5 seconds)
     motionMagicConfigs.MotionMagicJerk = 1000; // Target jerk of 1600 rps/s/s (0.1 seconds)
     
     motor1.getConfigurator().apply(fx_cfg, 0.050); //apply configuration to motor
