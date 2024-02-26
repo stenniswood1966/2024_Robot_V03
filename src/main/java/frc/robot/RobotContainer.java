@@ -176,7 +176,8 @@ public class RobotContainer {
 
     // Will be a parallel race group that ends after one second with the two and three second commands getting interrupted.
     //button.onTrue(Commands.race(twoSecCommand, oneSecCommand, threeSecCommand));
-    Button_1.onTrue(Commands.race(new IntakeCommand(), new LoadCommand()).withTimeout(5)); //commands run until the NoteisReady variable = true or timeout
+    //Button_1.onTrue(Commands.race(new IntakeCommand(), new LoadCommand()).withTimeout(5)); //commands run until the NoteisReady variable = true or timeout
+    Button_1.onTrue(new IntakeLoadCommand());
 
     Button_3.onTrue( //amp shoot position
       new ShoulderPositionCommand(Constants.k_ShoulderAmpPosition)
