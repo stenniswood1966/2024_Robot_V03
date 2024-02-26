@@ -135,17 +135,7 @@ public class RobotContainer {
                                         .whileTrue(new AutoAlignCommand(drivetrain));
 
     //shoot button
-    /*
-    joystick.y().whileTrue(
-      new ShootCommand()
-      .alongWith(new FeedCommand()))
-      .onFalse(new WristPositionCommand(Constants.k_WristHomePosition)
-      .withTimeout(0.25)
-      .andThen(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
-      );
-  
-    joystick.y().whileTrue(new AutoShootCommand());
-    */
+    //joystick.y().whileTrue(new AutoShootCommand());
 
     joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
 
