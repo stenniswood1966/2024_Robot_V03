@@ -21,10 +21,10 @@ public class WristManualCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double speed = RobotContainer.joystick2.getRawAxis(5) * 0.3; //slow speed fown by 70%
-    RobotContainer.wristsubsystem.set(speed);
+    //double speed = RobotContainer.joystick2.getRawAxis(5) * 0.3; //slow speed fown by 70%
+    //RobotContainer.wristsubsystem.set(speed);
   }
-
+  
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {

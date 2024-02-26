@@ -19,9 +19,39 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
-import frc.robot.commands.*;
+import frc.robot.commands.AutoAlignCommand;
+import frc.robot.commands.AutoShootCommand;
+import frc.robot.commands.AutoShoot_A;
+import frc.robot.commands.AutoShoot_B;
+import frc.robot.commands.AutoShoot_C;
+import frc.robot.commands.Auto_Feed_B;
+import frc.robot.commands.Auto_Home_C;
+import frc.robot.commands.Auto_Pos1_A;
+import frc.robot.commands.Auto_Pos2_A;
+import frc.robot.commands.Auto_Preload_A;
+import frc.robot.commands.ClimbDownCommand;
+import frc.robot.commands.ClimbUpCommand;
+import frc.robot.commands.FeedCommand;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.IntakeLoadCommand;
+import frc.robot.commands.LoadCommand;
+import frc.robot.commands.OutakeCommand;
+import frc.robot.commands.PrepareToShootCommand;
+import frc.robot.commands.ShootCommand;
+import frc.robot.commands.ShoulderManualCommand;
+import frc.robot.commands.ShoulderPositionCommand;
+import frc.robot.commands.WristManualCommand;
+import frc.robot.commands.WristPositionCommand;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.*;
+import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.FeedSubsystem;
+import frc.robot.subsystems.FiringSolutionSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LEDSubsystem;
+import frc.robot.subsystems.LaserSubsystem;
+import frc.robot.subsystems.ShootSubsystem;
+import frc.robot.subsystems.ShoulderSubsystem;
+import frc.robot.subsystems.WristSubsystem;
 
 public class RobotContainer {
   private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
@@ -60,6 +90,8 @@ public class RobotContainer {
   private JoystickButton Button_6 = new JoystickButton(m_operator1Controller, 6);
   private JoystickButton Button_8 = new JoystickButton(m_operator1Controller, 8);
   private JoystickButton Button_10 = new JoystickButton(m_operator1Controller, 10);
+  private JoystickButton Button_12 = new JoystickButton(m_operator1Controller, 12);
+  private JoystickButton Button_13 = new JoystickButton(m_operator1Controller, 13);
   private JoystickButton Button_20 = new JoystickButton(m_operator1Controller, 20);
   private JoystickButton Button_21 = new JoystickButton(m_operator1Controller, 21);
   private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22);
@@ -171,6 +203,9 @@ public class RobotContainer {
                                         .whileTrue(new AutoAlignCommand(drivetrain));
 
     Button_10.whileTrue(new OutakeCommand());
+
+    Button_12.whileTrue(new ClimbUpCommand());
+    Button_13.whileTrue(new ClimbDownCommand());
 
     Button_20.whileTrue(new ShoulderManualCommand().alongWith(new WristManualCommand())); //stops MM from running
     
