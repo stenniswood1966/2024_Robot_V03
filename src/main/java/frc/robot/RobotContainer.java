@@ -160,7 +160,7 @@ public class RobotContainer {
     Button_5.onTrue( //speaker shoot position against subwoofer
       new ShoulderPositionCommand(Constants.k_ShoulderShootPosition)
       .alongWith(new WaitCommand(0.25))
-      .alongWith(new WristPositionCommand(Constants.k_WristShootPosition))
+      .alongWith(new WristPositionCommand(Constants.k_WristPreloadShootPosition))
     );
     
     Button_6.onTrue(new PrepareToShootCommand()); //Use the FSS data to manage shoulder and wrist

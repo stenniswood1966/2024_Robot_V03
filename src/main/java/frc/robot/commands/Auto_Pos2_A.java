@@ -18,9 +18,9 @@ public class Auto_Pos2_A extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shootsubsystem.Shoot(60);
-    RobotContainer.shouldersubsystem.enablemotionmagic(11);
-    RobotContainer.wristsubsystem.enablemotionmagic(0.185);
+    RobotContainer.shootsubsystem.Shoot(Constants.k_Pos2ShooterSpeed);
+    RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
+    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristPos2ShootPosition);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,7 +34,7 @@ public class Auto_Pos2_A extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (!Constants.k_ShoulderMMisMoving && !Constants.k_WristMMisMoving && Constants.k_shootmotor1speed >= 45) {
+    if (!Constants.k_ShoulderMMisMoving && !Constants.k_WristMMisMoving && Constants.k_shootmotor1speed >= Constants.k_Pos2ShooterSpeed) {
       return true;
     } else {
       return false;

@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class Auto_Home_C extends Command {
-  /** Creates a new Preload3. */
-  public Auto_Home_C() {
+public class Auto_Pos3_A extends Command {
+  /** Creates a new A1. */
+  public Auto_Pos3_A() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shootsubsystem, RobotContainer.shouldersubsystem, RobotContainer.wristsubsystem);
   }
@@ -18,9 +18,9 @@ public class Auto_Home_C extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shootsubsystem.PreShoot();
-    RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderHomePosition);
-    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristHomePosition);
+    RobotContainer.shootsubsystem.Shoot(Constants.k_Pos3ShooterSpeed);
+    RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
+    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristPos3ShootPosition);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,12 +34,10 @@ public class Auto_Home_C extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    /*
-    if (!Constants.k_ShoulderMMisMoving && !Constants.k_WristMMisMoving) {
+    if (!Constants.k_ShoulderMMisMoving && !Constants.k_WristMMisMoving && Constants.k_shootmotor1speed >= Constants.k_Pos3ShooterSpeed) {
       return true;
     } else {
       return false;
-      */
-    return true;
+    }
   }
 }
