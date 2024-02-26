@@ -10,7 +10,6 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,8 +28,6 @@ public class RobotContainer {
   private double MinSpeed = TunerConstants.kSpeedAt12VoltsMps / 2; // min speed used during go slow
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
   private double POVSpeed = TunerConstants.kSpeedAt12VoltsMps / 6; //min speed used with POV buttons
-  private Rotation2d alignangle = Rotation2d.fromDegrees(0);
-
 
   //subsystems used
   public static ShoulderSubsystem shouldersubsystem = new ShoulderSubsystem();
@@ -49,7 +46,7 @@ public class RobotContainer {
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric().withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1).withDriveRequestType(DriveRequestType.OpenLoopVoltage); //10% deadband openloop driving
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
-  private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1).withDriveRequestType(DriveRequestType.OpenLoopVoltage);
+  //private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1).withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   //private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
   private final SwerveRequest.FieldCentricFacingAngle fieldcentricfacingangle = new SwerveRequest.FieldCentricFacingAngle().withDeadband(MaxSpeed * 0.1).withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   
@@ -122,8 +119,11 @@ public class RobotContainer {
       .withTimeout(0.25)
       .andThen(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
       );
-    */
+  
     joystick.y().whileTrue(new AutoShootCommand());
+    */
+
+    joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
 
     // reset the field-centric heading on left bumper press
     joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
@@ -233,6 +233,7 @@ public class RobotContainer {
     return autochooser.getSelected();
   }
 
+  /*
   public Rotation2d isAllianceRed() {
     var alliance = DriverStation.getAlliance();
     if (alliance.get() == DriverStation.Alliance.Red) {
@@ -245,4 +246,5 @@ public class RobotContainer {
     System.out.println("alignangle: " + alignangle);
     return alignangle;
   }
+  */
 }
