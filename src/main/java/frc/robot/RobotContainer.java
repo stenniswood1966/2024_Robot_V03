@@ -121,11 +121,7 @@ public class RobotContainer {
 
 
     //Go Slow mode
-    joystick.leftBumper().whileTrue(drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MinSpeed) // Drive forward with negative Y (forward) / 2
-                                        .withVelocityY(-joystick.getLeftX() * MinSpeed) // Drive left with negative X (left) / 2
-                                        .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
-                                        ).ignoringDisable(true));
-    joystick.rightBumper().whileTrue(drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MinSpeed) // Drive forward with negative Y (forward) / 2
+    joystick.leftBumper().or(joystick.rightBumper()).whileTrue(drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MinSpeed) // Drive forward with negative Y (forward) / 2
                                         .withVelocityY(-joystick.getLeftX() * MinSpeed) // Drive left with negative X (left) / 2
                                         .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
                                         ).ignoringDisable(true));
@@ -184,19 +180,17 @@ public class RobotContainer {
 
     Button_3.onTrue( //amp shoot position
       new ShoulderPositionCommand(Constants.k_ShoulderAmpPosition)
-      .alongWith(new WaitCommand(0.25))
       .alongWith(new WristPositionCommand(Constants.k_WristAmpPosition))
     );
 
     Button_5.onTrue( //speaker shoot position against subwoofer
       new ShoulderPositionCommand(Constants.k_ShoulderShootPosition)
-      .alongWith(new WaitCommand(0.25))
       .alongWith(new WristPositionCommand(Constants.k_WristPreloadShootPosition))
     );
     
     Button_6.onTrue(new PrepareToShootCommand()); //Use the FSS data to manage shoulder and wrist
 
-    Button_8.whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
+    Button_8.whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed) //allows Chloe to activate autoalign
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
                                         .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
                                         ).ignoringDisable(true))
