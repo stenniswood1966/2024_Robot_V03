@@ -18,9 +18,9 @@ public class Auto_Pos2_A extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shootsubsystem.Shoot(50);
+    RobotContainer.shootsubsystem.Shoot(60);
     RobotContainer.shouldersubsystem.enablemotionmagic(11);
-    RobotContainer.wristsubsystem.enablemotionmagic(0.150);
+    RobotContainer.wristsubsystem.enablemotionmagic(0.185);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

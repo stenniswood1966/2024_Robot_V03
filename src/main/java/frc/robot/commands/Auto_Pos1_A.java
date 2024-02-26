@@ -20,7 +20,7 @@ public class Auto_Pos1_A extends Command {
   public void initialize() {
     RobotContainer.shootsubsystem.Shoot(60);
     RobotContainer.shouldersubsystem.enablemotionmagic(11);
-    RobotContainer.wristsubsystem.enablemotionmagic(0.185);
+    RobotContainer.wristsubsystem.enablemotionmagic(0.190);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
