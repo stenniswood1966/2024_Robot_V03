@@ -136,14 +136,6 @@ public class RobotContainer {
 
     //shoot button
     /*
-    joystick.y().whileTrue(
-      new ShootCommand()
-      .alongWith(new FeedCommand()))
-      .onFalse(new WristPositionCommand(Constants.k_WristHomePosition)
-      .withTimeout(0.25)
-      .andThen(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
-      );
-  
     joystick.y().whileTrue(new AutoShootCommand());
     */
 
