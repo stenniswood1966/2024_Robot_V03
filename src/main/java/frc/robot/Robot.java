@@ -24,9 +24,9 @@ public class Robot extends TimedRobot {
 
     m_robotContainer.drivetrain.getDaqThread().setThreadPriority(99);
 
-    SmartDashboard.putData(CommandScheduler.getInstance()); //display commands on dashboard
+    //SmartDashboard.putData(CommandScheduler.getInstance()); //display commands on dashboard
 
-    enableLiveWindowInTest(true);
+    //enableLiveWindowInTest(true);
   }
   
   @Override
