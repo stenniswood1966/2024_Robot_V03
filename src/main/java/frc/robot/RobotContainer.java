@@ -136,7 +136,6 @@ public class RobotContainer {
 
     //shoot button
     //joystick.y().whileTrue(new AutoShootCommand());
-
     joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
 
     // reset the field-centric heading on left bumper press
