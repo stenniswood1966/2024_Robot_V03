@@ -47,8 +47,8 @@ public class Constants {
     public static double k_WristPos1ShootPosition = 0.190;
 
     //Postion 2
-    public static double k_Pos2ShooterSpeed = 60;
-    public static double k_WristPos2ShootPosition = 0.185;
+    public static double k_Pos2ShooterSpeed = 55;
+    public static double k_WristPos2ShootPosition = 0.166;
 
     //Postion 3
     public static double k_Pos3ShooterSpeed = 60;
