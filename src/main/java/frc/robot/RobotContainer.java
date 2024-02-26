@@ -51,10 +51,6 @@ public class RobotContainer {
   //private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
   private final SwerveRequest.FieldCentricFacingAngle fieldcentricfacingangle = new SwerveRequest.FieldCentricFacingAngle().withDeadband(MaxSpeed * 0.1).withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   
-
-  //joystick for manual subsystem control
-  public static CommandXboxController joystick2 = new CommandXboxController(2); //xbox360controller for manual control of mechanisms
-
   //XK-80 HID keypad
   private final XboxController m_operator1Controller = new XboxController(1);
   private JoystickButton Button_1 = new JoystickButton(m_operator1Controller, 1);
@@ -85,7 +81,7 @@ public class RobotContainer {
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ).ignoringDisable(true));
 
-    //assign driver joystick buttons to drivetrain functions
+  //assign driver joystick buttons to drivetrain functions
     //Robot centric driving "aka forwardStraight"
     joystick.b().toggleOnTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
     .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
@@ -146,7 +142,7 @@ public class RobotContainer {
     joystick.pov(270).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(POVSpeed).withTargetDirection(alignangle)));
 
 
-
+  //assign operator controls
     //Xk-80 HID Port 1
     //Button_1.whileTrue(new IntakeCommand());
     // Button_2.whileTrue(new LoadCommand());
@@ -193,12 +189,6 @@ public class RobotContainer {
       .withTimeout(0.25)
       .andThen(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
       );
-      
-    //joystick2 used for testing manual commands
-    joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
-    joystick2.b().whileTrue(new AutoShootCommand());
-    joystick2.x().whileTrue(new ClimbCommand());
-
 
     /* Bindings for drivetrain characterization */
     /* These bindings require multiple buttons pushed to swap between quastatic and dynamic */
