@@ -10,6 +10,7 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -157,12 +158,12 @@ public class RobotContainer {
     drivetrain.registerTelemetry(logger::telemeterize);
 
     //POV buttons slow mode auto rotate to zero
-    fieldcentricfacingangle.HeadingController = new PhoenixPIDController(10.0, 0, 0);
-    Rotation2d alignangle = Rotation2d.fromDegrees(0); //sets the angle the robot should face to zero
-    joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
-    joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
-    joystick.pov(90).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(-POVSpeed).withTargetDirection(alignangle)));
-    joystick.pov(270).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(POVSpeed).withTargetDirection(alignangle)));
+    fieldcentricfacingangle.HeadingController = new PhoenixPIDController(10.0, 0, 0); //this is probably too aggressive if you are very far from the target
+    //Rotation2d alignangle = Rotation2d.fromDegrees(0); //sets the angle the robot should face to zero
+    joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(isAllianceRed())));
+    joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(isAllianceRed())));
+    joystick.pov(90).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(-POVSpeed).withTargetDirection(isAllianceRed())));
+    joystick.pov(270).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(POVSpeed).withTargetDirection(isAllianceRed())));
 
 
   //assign operator controls - Xk-80 HID Port 1
@@ -193,11 +194,11 @@ public class RobotContainer {
     Button_10.whileTrue(new OutakeCommand());
 
     Button_12.whileTrue(new ClimbUpCommand());
+
     Button_13.whileTrue(new ClimbDownCommand());
 
     Button_20.whileTrue(new ShoulderManualCommand().alongWith(new WristManualCommand())); //stops MM from running
     
-
     Button_21.onTrue( //home
       new WristPositionCommand(Constants.k_WristHomePosition)
       .alongWith(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
@@ -232,7 +233,7 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
     namedcommands(); //pathplanner namedcommands
-    //isAllianceRed();
+    isAllianceRed();
     //Commands.run(shootsubsystem::PreShoot, shootsubsystem);
 
     //pathplanner sendablechooser
@@ -248,18 +249,21 @@ public class RobotContainer {
     return autochooser.getSelected();
   }
 
-  /*
+
   public Rotation2d isAllianceRed() {
     var alliance = DriverStation.getAlliance();
     if (alliance.get() == DriverStation.Alliance.Red) {
-      //System.out.println("Red" + 180);
-      Rotation2d alignangle = Rotation2d.fromDegrees(180);
+      System.out.println("Red" + 180);
+      //Rotation2d alignangle = Rotation2d.fromDegrees(180);
+      //System.out.println("alignangle: " + alignangle);
+      return Rotation2d.fromDegrees(180);
       } else {
-      //System.out.println("Blue" + 0);
-      Rotation2d alignangle = Rotation2d.fromDegrees(0);
+      System.out.println("Blue" + 0);
+      //Rotation2d alignangle = Rotation2d.fromDegrees(0);
+      //System.out.println("alignangle: " + alignangle);
+      return Rotation2d.fromDegrees(0);
     }
-    System.out.println("alignangle: " + alignangle);
-    return alignangle;
+    
   }
-  */
+
 }
