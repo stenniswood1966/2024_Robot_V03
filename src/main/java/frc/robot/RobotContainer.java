@@ -165,10 +165,7 @@ public class RobotContainer {
     joystick.pov(270).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(POVSpeed).withTargetDirection(alignangle)));
 
 
-  //assign operator controls
-    //Xk-80 HID Port 1
-    //Button_1.whileTrue(new IntakeCommand());
-    // Button_2.whileTrue(new LoadCommand());
+  //assign operator controls - Xk-80 HID Port 1
 
     // Will be a parallel race group that ends after one second with the two and three second commands getting interrupted.
     //button.onTrue(Commands.race(twoSecCommand, oneSecCommand, threeSecCommand));
