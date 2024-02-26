@@ -34,10 +34,13 @@ public class Auto_Home_C extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    /*
     if (!Constants.k_ShoulderMMisMoving && !Constants.k_WristMMisMoving) {
       return true;
     } else {
       return false;
+      */
+    return true;
   }
 }
 }
