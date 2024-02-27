@@ -188,9 +188,7 @@ public class RobotContainer {
     Button_20.whileTrue(new ShoulderManualCommand().alongWith(new WristManualCommand())); //stops MM from running
     
     Button_21.onTrue( //home
-      new WristPositionCommand(Constants.k_WristHomePosition)
-      .alongWith(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
-    );
+      new WristPositionCommand(Constants.k_WristHomePosition).alongWith(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition)));
 
     Button_22.whileTrue(new ShootCommand().andThen(new FeedCommand()));
 
