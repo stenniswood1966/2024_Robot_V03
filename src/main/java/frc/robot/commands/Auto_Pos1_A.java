@@ -8,34 +8,36 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class ShootCommand extends Command {
-  /** Creates a new ShootCommand. */
-  public ShootCommand() {
+public class Auto_Pos1_A extends Command {
+  /** Creates a new A1. */
+  public Auto_Pos1_A() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.shootsubsystem);
+    addRequirements(RobotContainer.shootsubsystem, RobotContainer.shouldersubsystem, RobotContainer.wristsubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    RobotContainer.shootsubsystem.Shoot(Constants.k_Pos1ShooterSpeed);
+    RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
+    RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_WristPos1ShootPosition);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    RobotContainer.shootsubsystem.Shoot(Constants.k_FiringSolutionSpeed);
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    RobotContainer.shootsubsystem.Stop();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (!Constants.k_ShoulderMMisMoving && !Constants.k_WristMMisMoving && Constants.k_shootmotor1speed >= Constants.k_Pos1ShooterSpeed) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

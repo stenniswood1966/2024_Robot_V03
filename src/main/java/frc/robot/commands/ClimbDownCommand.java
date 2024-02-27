@@ -7,9 +7,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
-public class ClimbCommand extends Command {
-  /** Creates a new ClimbCommand. */
-  public ClimbCommand() {
+public class ClimbDownCommand extends Command {
+  /** Creates a new ClimbDownCommand. */
+  public ClimbDownCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.climbsubsystem);
   }
@@ -21,8 +21,7 @@ public class ClimbCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double speed = RobotContainer.joystick2.getRawAxis(4) * 0.3;
-    RobotContainer.climbsubsystem.set(speed);
+    RobotContainer.climbsubsystem.set(-0.3);
   }
 
   // Called once the command ends or is interrupted.

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.82,
-      "y": 4.66
+      "x": 1.25,
+      "y": 5.5
     },
-    "rotation": -77.44999999999999
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Auto Shoot"
+            "name": "Preload_Shoot"
           }
         },
         {
@@ -24,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Start - 8"
+                  "pathName": "Preload - 2"
                 }
               },
               {
@@ -37,15 +37,9 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "8 - Line"
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "Auto Shoot"
+            "name": "Position2_Shoot"
           }
         },
         {
@@ -55,7 +49,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Line - 7"
+                  "pathName": "2 - 1"
                 }
               },
               {
@@ -68,15 +62,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "7 - Line"
+            "name": "Position1_Shoot"
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "Auto Shoot"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "1-5"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake and Load"
+                }
+              }
+            ]
           }
         }
       ]

@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Auto Shoot"
+            "name": "Preload_Shoot"
           }
         },
         {
@@ -24,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Start - 2"
+                  "pathName": "Preload - 2"
                 }
               },
               {
@@ -45,7 +45,38 @@
         {
           "type": "named",
           "data": {
-            "name": "Auto Shoot"
+            "name": "Position2_Shoot"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Line - 4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake and Load"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4 - Line"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Position2_Shoot"
           }
         }
       ]

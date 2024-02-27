@@ -5,7 +5,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
@@ -27,7 +26,6 @@ public class PrepareToShootCommand extends Command {
   public void execute() {
     //System.out.println("PrepareToShootCMD");
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
-    new WaitCommand(0.25);
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
   }
 

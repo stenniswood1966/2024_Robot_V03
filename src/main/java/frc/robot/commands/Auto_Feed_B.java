@@ -8,34 +8,36 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class ShootCommand extends Command {
-  /** Creates a new ShootCommand. */
-  public ShootCommand() {
+public class Auto_Feed_B extends Command {
+  /** Creates a new Preload2. */
+  public Auto_Feed_B() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.shootsubsystem);
+    addRequirements(RobotContainer.feedsubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    RobotContainer.feedsubsystem.Feed();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    RobotContainer.shootsubsystem.Shoot(Constants.k_FiringSolutionSpeed);
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.shootsubsystem.Stop();
+    RobotContainer.feedsubsystem.Stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (!Constants.k_NoteisReady) { //no note in shooter start to home wrist and shoulder
+      return true;
+    } else {
+      return false;
+    }
   }
 }
