@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.AutoAlignCommand;
-import frc.robot.commands.AutoShootCommand;
 import frc.robot.commands.AutoShoot_A;
 import frc.robot.commands.AutoShoot_B;
 import frc.robot.commands.AutoShoot_C;
@@ -193,7 +192,10 @@ public class RobotContainer {
       .alongWith(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
     );
 
-    Button_22.whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+    Button_22.whileTrue( // shoot
+      new ShootCommand()
+      .andThen(new FeedCommand())
+    );
 
     /* Bindings for drivetrain characterization */
     /* These bindings require multiple buttons pushed to swap between quastatic and dynamic */
