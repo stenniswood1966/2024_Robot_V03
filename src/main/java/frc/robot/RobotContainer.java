@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.AutoAlignCommand;
-import frc.robot.commands.AutoShootCommand;
 import frc.robot.commands.AutoShoot_A;
 import frc.robot.commands.AutoShoot_B;
 import frc.robot.commands.AutoShoot_C;
@@ -193,7 +192,7 @@ public class RobotContainer {
       .alongWith(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
     );
 
-    Button_22.whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+    Button_22.whileTrue(new ShootCommand().andThen(new FeedCommand()));
 
     /* Bindings for drivetrain characterization */
     /* These bindings require multiple buttons pushed to swap between quastatic and dynamic */
@@ -207,10 +206,11 @@ public class RobotContainer {
   private void namedcommands() {
   // Register Named Commands for pathplanner to use during autonomous
   NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
-  //NamedCommands.registerCommand("Auto Shoot", new AutoShootCommand().withTimeout(5));
-  NamedCommands.registerCommand("Preload_Shoot", new Auto_Preload_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()));
-  NamedCommands.registerCommand("Position2_Shoot", new Auto_Pos2_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()));
-  NamedCommands.registerCommand("Position1_Shoot", new Auto_Pos1_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()));
+  NamedCommands.registerCommand("Auto Shoot", new AutoShoot_A().andThen(new AutoShoot_B().andThen(new AutoShoot_C())).withTimeout(5));
+  //joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+  NamedCommands.registerCommand("Preload_Shoot", new Auto_Preload_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
+  NamedCommands.registerCommand("Position2_Shoot", new Auto_Pos2_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
+  NamedCommands.registerCommand("Position1_Shoot", new Auto_Pos1_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
   }
 
   public RobotContainer() {
