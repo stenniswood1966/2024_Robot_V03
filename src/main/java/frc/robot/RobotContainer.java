@@ -192,10 +192,7 @@ public class RobotContainer {
       .alongWith(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition))
     );
 
-    Button_22.whileTrue( // shoot
-      new ShootCommand()
-      .andThen(new FeedCommand())
-    );
+    Button_22.whileTrue(new ShootCommand().andThen(new FeedCommand()));
 
     /* Bindings for drivetrain characterization */
     /* These bindings require multiple buttons pushed to swap between quastatic and dynamic */
