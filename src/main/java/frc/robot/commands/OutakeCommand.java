@@ -18,6 +18,7 @@ public class OutakeCommand extends Command {
   @Override
   public void initialize() {
     RobotContainer.intakesubsystem.Outake();
+    //add shooter and feeder and active center wheels to run in reverse
   }
 
   // Called every time the scheduler runs while the command is scheduled.
