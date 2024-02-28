@@ -10,7 +10,6 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -52,6 +51,7 @@ import frc.robot.subsystems.WristSubsystem;
 public class RobotContainer {
   private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
   private double MinSpeed = TunerConstants.kSpeedAt12VoltsMps / 2; // min speed used during go slow
+  private double VerySlowSpeed = 1.0; // min speed used during go very slow
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
   private double POVSpeed = TunerConstants.kSpeedAt12VoltsMps / 6; //min speed used with POV buttons
 
@@ -117,8 +117,14 @@ public class RobotContainer {
 
 
     //Go Slow mode
-    joystick.leftBumper().or(joystick.rightBumper()).whileTrue(drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MinSpeed) // Drive forward with negative Y (forward) / 2
+    joystick.leftBumper().whileTrue(drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MinSpeed) // Drive forward with negative Y (forward) / 2
                                         .withVelocityY(-joystick.getLeftX() * MinSpeed) // Drive left with negative X (left) / 2
+                                        .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
+                                        ).ignoringDisable(true));
+
+    //Go very very Slow mode
+    joystick.rightBumper().whileTrue(drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * VerySlowSpeed) // Drive forward with negative Y (forward) / 2
+                                        .withVelocityY(-joystick.getLeftX() * VerySlowSpeed) // Drive left with negative X (left) / 2
                                         .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
                                         ).ignoringDisable(true));
 
@@ -147,11 +153,11 @@ public class RobotContainer {
 
     //POV buttons slow mode auto rotate to zero
     fieldcentricfacingangle.HeadingController = new PhoenixPIDController(10.0, 0, 0); //this is probably too aggressive if you are very far from the target
-    //Rotation2d alignangle = Rotation2d.fromDegrees(0); //sets the angle the robot should face to zero
-    joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(isAllianceRed())));
-    joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(isAllianceRed())));
-    joystick.pov(90).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(-POVSpeed).withTargetDirection(isAllianceRed())));
-    joystick.pov(270).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(POVSpeed).withTargetDirection(isAllianceRed())));
+    Rotation2d alignangle = Rotation2d.fromDegrees(0); //sets the angle the robot should face to zero
+    joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
+    joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
+    joystick.pov(90).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(-POVSpeed).withTargetDirection(alignangle)));
+    joystick.pov(270).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(POVSpeed).withTargetDirection(alignangle)));
 
 
   //assign operator controls - Xk-80 HID Port 1
@@ -214,7 +220,7 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
     namedcommands(); //pathplanner namedcommands
-    isAllianceRed();
+    //isAllianceRed();
     //Commands.run(shootsubsystem::PreShoot, shootsubsystem);
 
     //pathplanner sendablechooser
@@ -229,22 +235,4 @@ public class RobotContainer {
     //return runAuto;
     return autochooser.getSelected();
   }
-
-
-  public Rotation2d isAllianceRed() {
-    var alliance = DriverStation.getAlliance();
-    if (alliance.get() == DriverStation.Alliance.Red) {
-      System.out.println("Red" + 180);
-      //Rotation2d alignangle = Rotation2d.fromDegrees(180);
-      //System.out.println("alignangle: " + alignangle);
-      return Rotation2d.fromDegrees(180);
-      } else {
-      System.out.println("Blue" + 0);
-      //Rotation2d alignangle = Rotation2d.fromDegrees(0);
-      //System.out.println("alignangle: " + alignangle);
-      return Rotation2d.fromDegrees(0);
-    }
-    
-  }
-
 }
