@@ -37,6 +37,10 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     shooterSpeeds.put(90.0, (double) 60);
     shooterSpeeds.put(92.0, (double) 60);
     shooterSpeeds.put(96.0, (double) 60);
+    shooterSpeeds.put(100.0, (double) 60);
+    shooterSpeeds.put(105.0, (double) 60);
+    shooterSpeeds.put(110.0, (double) 60);
+    shooterSpeeds.put(115.0, (double) 60);
     shooterSpeeds.put(999.0, (double) 60);
   }
 
@@ -55,6 +59,10 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     wristAngle.put(90.0, (double) 0.185);
     wristAngle.put(92.0, (double) 0.185);
     wristAngle.put(96.0, (double) 0.192);
+    wristAngle.put(100.0, (double) 0.192);
+    wristAngle.put(105.0, (double) 0.192);
+    wristAngle.put(110.0, (double) 0.192);
+    wristAngle.put(115.0, (double) 0.192);
     wristAngle.put(999.0, (double) 0.192);
   }
 
