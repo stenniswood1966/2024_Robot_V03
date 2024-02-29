@@ -94,7 +94,7 @@ public class FiringSolutionSubsystem extends SubsystemBase {
   public void periodic() {
     Constants.k_LLDistanceToAprilTag = getDistance();
 
-    if (Constants.k_LLDistanceToAprilTag >= 36 && Constants.k_LLDistanceToAprilTag <= 92) {
+    if (Constants.k_LLDistanceToAprilTag >= 36 && Constants.k_LLDistanceToAprilTag <= 115) {
 
     double s_closeDistance = shooterSpeeds.floorKey(Constants.k_LLDistanceToAprilTag);
     double s_farDistance = shooterSpeeds.ceilingKey(Constants.k_LLDistanceToAprilTag);
