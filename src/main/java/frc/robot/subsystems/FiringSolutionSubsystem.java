@@ -65,7 +65,7 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     double targetOffsetAngle_Vertical = LimelightHelpers.getTY("limelight");
 
     // how many degrees back is your limelight rotated from perfectly vertical?
-    double limelightMountAngleDegrees = 20.0; 
+    double limelightMountAngleDegrees = 25.0; 
 
     // distance from the center of the Limelight lens to the floor
     double limelightLensHeightInches = 23.5; 
