@@ -5,30 +5,32 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class ShoulderManualCommand extends Command {
-  /** Creates a new ShoulderManualCommand. */
-  public ShoulderManualCommand() {
+public class AmpFeedCommand extends Command {
+  /** Creates a new FeedCommand. */
+  public AmpFeedCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.shouldersubsystem);
+    addRequirements(RobotContainer.feedsubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //double speed = RobotContainer.joystick2.getRawAxis(1) * .3; //slow speed down by 70%
-    //RobotContainer.shouldersubsystem.set(speed);
+    RobotContainer.feedsubsystem.Feed();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.shouldersubsystem.stop();
+    RobotContainer.feedsubsystem.Stop();
   }
 
   // Returns true when the command should end.

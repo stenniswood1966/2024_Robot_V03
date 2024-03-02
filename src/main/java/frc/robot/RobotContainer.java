@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
+import frc.robot.commands.AmpFeedCommand;
+import frc.robot.commands.AmpShootCommand;
 import frc.robot.commands.AutoAlignCommand;
 import frc.robot.commands.AutoShoot_A;
 import frc.robot.commands.AutoShoot_B;
@@ -70,7 +72,7 @@ public class RobotContainer {
   public static LEDSubsystem ledsubsystem = new LEDSubsystem();
 
   //Testing joystick2
-  public static CommandXboxController joystick2 = new CommandXboxController(2);
+  //public static CommandXboxController joystick2 = new CommandXboxController(2);
   
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
@@ -87,7 +89,7 @@ public class RobotContainer {
   private JoystickButton Button_1 = new JoystickButton(m_operator1Controller, 1);
   //private JoystickButton Button_2 = new JoystickButton(m_operator1Controller, 2);
   private JoystickButton Button_3 = new JoystickButton(m_operator1Controller, 3);
-  //private JoystickButton Button_4 = new JoystickButton(m_operator1Controller, 4);
+  private JoystickButton Button_4 = new JoystickButton(m_operator1Controller, 4);
   private JoystickButton Button_5 = new JoystickButton(m_operator1Controller, 5);
   private JoystickButton Button_6 = new JoystickButton(m_operator1Controller, 6);
   private JoystickButton Button_8 = new JoystickButton(m_operator1Controller, 8);
@@ -115,7 +117,7 @@ public class RobotContainer {
         ).ignoringDisable(true));
 
 //Testing Joystick2
-    joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
+    //joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
 
 
   //assign driver joystick buttons to drivetrain functions
@@ -183,6 +185,8 @@ public class RobotContainer {
       new ShoulderPositionCommand(Constants.k_ShoulderAmpPosition)
       .alongWith(new WristPositionCommand(Constants.k_WristAmpPosition))
     );
+
+    Button_4.whileTrue(new AmpShootCommand().alongWith(new AmpFeedCommand()));
 
     Button_5.onTrue( //speaker shoot position against subwoofer
       new ShoulderPositionCommand(Constants.k_ShoulderShootPosition)
