@@ -18,14 +18,14 @@ public class Constants {
 
     //Shoulder MM postions
     public static boolean k_ShoulderMMisMoving = false;
-    public static final double k_ShoulderHomePosition = 2;
+    public static final double k_ShoulderHomePosition = 1;
     public static final double k_ShoulderShootPosition = 11;
-    public static final double k_ShoulderAmpPosition = 48.91;
+    public static final double k_ShoulderAmpPosition = 46.563;
 
     //Wrist MM Position
     public static boolean k_WristMMisMoving = false;
-    public static double k_WristHomePosition = 0.0364; //0.051
-    public static double k_WristAmpPosition = 0.41;
+    public static double k_WristHomePosition = 0.111;
+    public static double k_WristAmpPosition = 0.442;
 
     //FiringSolutionSubsystem
     public static double k_LLDistanceToAprilTag = 0.0;
@@ -39,18 +39,27 @@ public class Constants {
 
 //Shooting postion
     //Preload
-    public static double k_PreloadShooterSpeed = 45;
-    public static double k_WristPreloadShootPosition = 0.137;
+    public static double k_PreloadShooterSpeed = 50;
+    public static double k_WristPreloadShootPosition = 0.195; //0.137
 
     //Position 1
     public static double k_Pos1ShooterSpeed = 60;
-    public static double k_WristPos1ShootPosition = 0.190;
+    public static double k_WristPos1ShootPosition = 0.253;
 
-    //Postion 2
-    public static double k_Pos2ShooterSpeed = 55;
-    public static double k_WristPos2ShootPosition = 0.166;
+    //Position 2
+    public static double k_Pos2ShooterSpeed = 60;
+    public static double k_WristPos2ShootPosition = 0.249;
 
-    //Postion 3
+    //Position 2a
+    public static double k_Pos2aShooterSpeed = 60;
+    public static double k_WristPos2aShootPosition = 0.240;
+
+    //Position 3
     public static double k_Pos3ShooterSpeed = 60;
-    public static double k_WristPos3ShootPosition = 0.190;
+    public static double k_WristPos3ShootPosition = 0.244;
+
+    //Position 3a
+    public static double k_Pos3aShooterSpeed = 60;
+    public static double k_WristPos3aShootPosition = 0.241;
+    
 }

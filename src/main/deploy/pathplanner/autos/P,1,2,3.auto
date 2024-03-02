@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.21,
-      "y": 4.1
+      "x": 0.56,
+      "y": 4.09
     },
-    "rotation": -45.28246581320714
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -14,19 +14,88 @@
         {
           "type": "path",
           "data": {
-            "pathName": "P - 1"
+            "pathName": "P - P3a"
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "1 - 2"
+            "name": "Position3a_Shoot"
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "2 - 3"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "P3a-P3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake and Load"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Position3_Shoot"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "P3 - P2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake and Load"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Position2a_Shoot"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "P2 - P1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake and Load"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Position1_Shoot"
           }
         }
       ]

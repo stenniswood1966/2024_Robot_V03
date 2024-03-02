@@ -85,6 +85,18 @@
               }
             ]
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "5 - 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Position1_Shoot"
+          }
         }
       ]
     }

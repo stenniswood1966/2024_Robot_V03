@@ -25,6 +25,9 @@ import frc.robot.commands.Auto_Feed_B;
 import frc.robot.commands.Auto_Home_C;
 import frc.robot.commands.Auto_Pos1_A;
 import frc.robot.commands.Auto_Pos2_A;
+import frc.robot.commands.Auto_Pos2a_A;
+import frc.robot.commands.Auto_Pos3_A;
+import frc.robot.commands.Auto_Pos3a_A;
 import frc.robot.commands.Auto_Preload_A;
 import frc.robot.commands.ClimbDownCommand;
 import frc.robot.commands.ClimbUpCommand;
@@ -51,7 +54,7 @@ import frc.robot.subsystems.WristSubsystem;
 public class RobotContainer {
   private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
   private double MinSpeed = TunerConstants.kSpeedAt12VoltsMps / 2; // min speed used during go slow
-  private double VerySlowSpeed = 1.0; // min speed used during go very slow
+  private double VerySlowSpeed = 1.5; // min speed used during go very slow
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
   private double POVSpeed = TunerConstants.kSpeedAt12VoltsMps / 6; //min speed used with POV buttons
 
@@ -66,6 +69,9 @@ public class RobotContainer {
   public static ClimbSubsystem climbsubsystem = new ClimbSubsystem();
   public static LEDSubsystem ledsubsystem = new LEDSubsystem();
 
+  //Testing joystick2
+  public static CommandXboxController joystick2 = new CommandXboxController(2);
+  
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -108,9 +114,15 @@ public class RobotContainer {
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ).ignoringDisable(true));
 
+//Testing Joystick2
+    joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
+
+
   //assign driver joystick buttons to drivetrain functions
+    joystick.b().onTrue(new IntakeLoadCommand());
+
     //Robot centric driving "aka forwardStraight"
-    joystick.b().toggleOnTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
+    joystick.a().toggleOnTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
     .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
     .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
     ).ignoringDisable(true));
@@ -196,7 +208,7 @@ public class RobotContainer {
     Button_21.onTrue( //home
       new WristPositionCommand(Constants.k_WristHomePosition).alongWith(new ShoulderPositionCommand(Constants.k_ShoulderHomePosition)));
 
-    Button_22.whileTrue(new ShootCommand().andThen(new FeedCommand()));
+    Button_22.whileTrue(new ShootCommand().alongWith(new FeedCommand()));
 
     /* Bindings for drivetrain characterization */
     /* These bindings require multiple buttons pushed to swap between quastatic and dynamic */
@@ -214,7 +226,10 @@ public class RobotContainer {
   //joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
   NamedCommands.registerCommand("Preload_Shoot", new Auto_Preload_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
   NamedCommands.registerCommand("Position2_Shoot", new Auto_Pos2_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
+  NamedCommands.registerCommand("Position2a_Shoot", new Auto_Pos2a_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
   NamedCommands.registerCommand("Position1_Shoot", new Auto_Pos1_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
+  NamedCommands.registerCommand("Position3_Shoot", new Auto_Pos3_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
+  NamedCommands.registerCommand("Position3a_Shoot", new Auto_Pos3a_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
   }
 
   public RobotContainer() {
