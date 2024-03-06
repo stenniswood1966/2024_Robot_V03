@@ -45,7 +45,7 @@ public class ShoulderSubsystem extends SubsystemBase {
     //configuration for motor1
     fx_cfg.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
     fx_cfg.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = true;
+    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = false;
     fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitEnable = false;
     fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitThreshold = 90;
     fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 0.5;
