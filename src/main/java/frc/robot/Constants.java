@@ -30,7 +30,7 @@ public class Constants {
     //FiringSolutionSubsystem
     public static double k_LLDistanceToAprilTag = 0.0;
     public static double k_FiringSolutionSpeed = 45;
-    public static double k_FiringSolutionAngle = 0.135;
+    public static double k_FiringSolutionAngle = 0.204;
 
     //shootersubsystem motor speeds
     public static double k_shootmotor1speed = 0.0;

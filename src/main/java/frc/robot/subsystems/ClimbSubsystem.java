@@ -24,10 +24,10 @@ public class ClimbSubsystem extends SubsystemBase {
     var fx_cfg = new TalonFXConfiguration(); // creates a default TalonFX configuration
     fx_cfg.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
     fx_cfg.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = false;
-    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitEnable = false;
-    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitThreshold = 90;
-    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 0.5;
+    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = true;
+    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitEnable = true;
+    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitThreshold = 152.0;
+    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 0;
     
     motor1.getConfigurator().apply(fx_cfg, 0.050);
  
@@ -43,7 +43,7 @@ public class ClimbSubsystem extends SubsystemBase {
     }
  
   public void climb() {
-   motor1.set(0.5);
+   motor1.set(0.7);
    }
 
   public void set(Double speed)  {
