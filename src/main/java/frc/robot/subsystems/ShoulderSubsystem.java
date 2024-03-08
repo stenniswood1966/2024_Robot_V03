@@ -34,7 +34,7 @@ public class ShoulderSubsystem extends SubsystemBase {
     fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = true;
     fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitEnable = true;
     fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitThreshold = 90;
-    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 0.5;
+    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 1.0;
 
     //set motor2 as a strict follower
     motor2.setControl(new StrictFollower(motor1.getDeviceID()));
@@ -45,17 +45,17 @@ public class ShoulderSubsystem extends SubsystemBase {
     //configuration for motor1
     fx_cfg.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
     fx_cfg.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = false;
-    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitEnable = false;
+    fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitEnable = true;
+    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitEnable = true;
     fx_cfg.SoftwareLimitSwitch.ForwardSoftLimitThreshold = 90;
-    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 0.5;
+    fx_cfg.SoftwareLimitSwitch.ReverseSoftLimitThreshold = 1.0;
 
     // set slot 0 gains
     var slot0Configs = fx_cfg.Slot0;
     slot0Configs.kS = 0.25; // Add 0.25 V output to overcome static friction
     slot0Configs.kV = 0.2; // A velocity target of 1 rps results in 0.12 V output
     slot0Configs.kA = 0.02; // An acceleration of 1 rps/s requires 0.01 V output
-    slot0Configs.kP = 10; // A position error of 2.5 rotations results in 12 V output
+    slot0Configs.kP = 8; // A position error of 2.5 rotations results in 12 V output WAS 10
     slot0Configs.kI = 0; // no output for integrated error
     slot0Configs.kD = 0.1; // A velocity error of 1 rps results in 0.1 V output
     slot0Configs.GravityType = GravityTypeValue.Arm_Cosine;
