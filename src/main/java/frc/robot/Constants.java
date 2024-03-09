@@ -24,13 +24,13 @@ public class Constants {
 
     //Wrist MM Position
     public static boolean k_WristMMisMoving = false;
-    public static double k_WristHomePosition = 0.111;
-    public static double k_WristAmpPosition = 0.442;
+    public static double k_WristHomePosition = 0.242;
+    public static double k_WristAmpPosition = 0.609;
 
     //FiringSolutionSubsystem
     public static double k_LLDistanceToAprilTag = 0.0;
     public static double k_FiringSolutionSpeed = 45;
-    public static double k_FiringSolutionAngle = 0.204;
+    public static double k_FiringSolutionAngle = 0.316;
 
     //shootersubsystem motor speeds
     public static double k_shootmotor1speed = 0.0;
@@ -40,7 +40,7 @@ public class Constants {
 //Shooting postion
     //Preload
     public static double k_PreloadShooterSpeed = 50;
-    public static double k_WristPreloadShootPosition = 0.195; //0.137
+    public static double k_WristPreloadShootPosition = 0.316; //0.137
 
     //Position 1
     public static double k_Pos1ShooterSpeed = 60;

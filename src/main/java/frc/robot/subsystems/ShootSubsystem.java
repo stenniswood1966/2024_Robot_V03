@@ -64,8 +64,8 @@ public class ShootSubsystem extends SubsystemBase {
 
   public void AmpShoot() {
     m_velocity.Slot = 0;
-    motor1.setControl(m_velocity.withVelocity(25));
-    motor2.setControl(m_velocity.withVelocity(25));
+    motor1.setControl(m_velocity.withVelocity(1));
+    motor2.setControl(m_velocity.withVelocity(1));
   }
 
   public void Stop() {

@@ -45,23 +45,23 @@ public class FiringSolutionSubsystem extends SubsystemBase {
   }
 
     private void setUpWristLookUpTable() {
-    wristAngle.put(0.0, (double) 0.204);
-    wristAngle.put(35.0, (double) 0.204);
-    wristAngle.put(40.0, (double) 0.204);
-    wristAngle.put(45.0, (double) 0.211);
-    wristAngle.put(50.0, (double) 0.218);
-    wristAngle.put(55.0, (double) 0.225);
-    wristAngle.put(60.0, (double) 0.237);
-    wristAngle.put(65.0, (double) 0.243);
-    wristAngle.put(70.0, (double) 0.246);
-    wristAngle.put(75.0, (double) 0.253);
-    wristAngle.put(80.0, (double) 0.254);
-    wristAngle.put(85.0, (double) 0.260);
-    wristAngle.put(90.0, (double) 0.267);
-    wristAngle.put(95.0, (double) 0.269);
-    wristAngle.put(100.0, (double) 0.271);
-    wristAngle.put(105.00, (double) 0.273);
-    wristAngle.put(999.0, (double) 0.275);
+    wristAngle.put(0.0, (double) 0.319);//.204
+    wristAngle.put(35.0, (double) 0.319);
+    wristAngle.put(40.0, (double) 0.319);
+    wristAngle.put(45.0, (double) 0.211+ .119);
+    wristAngle.put(50.0, (double) 0.218+ .119);
+    wristAngle.put(55.0, (double) 0.225+ .119);
+    wristAngle.put(60.0, (double) 0.237+ .119);
+    wristAngle.put(65.0, (double) 0.243+ .119);
+    wristAngle.put(70.0, (double) 0.246+ .119);
+    wristAngle.put(75.0, (double) 0.253+ .119);
+    wristAngle.put(80.0, (double) 0.256+ .119);
+    wristAngle.put(85.0, (double) 0.260+ .119);
+    wristAngle.put(90.0, (double) 0.267+ .119);
+    wristAngle.put(95.0, (double) 0.269+ .119);
+    wristAngle.put(100.0, (double) 0.271+ .119);
+    wristAngle.put(105.00, (double) 0.273+ .119);
+    wristAngle.put(999.0, (double) 0.275+ .119);
   }
 
   private double getDistance() {
@@ -108,7 +108,7 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     }
     else {
       Constants.k_FiringSolutionSpeed = 45;
-      Constants.k_FiringSolutionAngle = 0.204;
+      Constants.k_FiringSolutionAngle = 0.316;
     }
 
   SmartDashboard.putNumber("FSS calculated distance: ", Constants.k_LLDistanceToAprilTag);
