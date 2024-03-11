@@ -113,14 +113,23 @@ public class RobotContainer {
 
 
   //assign driver joystick buttons to drivetrain functions
+
+    //shoot button
+    joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+    joystick.a().whileTrue(new AutoAlignCommand(drivetrain).withTimeout(1).andThen(new AutoShoot_A()).andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+    
     joystick.b().onTrue(new IntakeLoadCommand());
+    
+    //X-stop brake mode
+    joystick.x().whileTrue(drivetrain.applyRequest(() -> brake));
 
     //Robot centric driving "aka forwardStraight"
+    /*
     joystick.a().toggleOnTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
     .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
     .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
     ).ignoringDisable(true));
-
+    */
 
     //Go Slow mode
     joystick.leftBumper().whileTrue(drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MinSpeed) // Drive forward with negative Y (forward) / 2
@@ -134,9 +143,6 @@ public class RobotContainer {
                                         .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
                                         ).ignoringDisable(true));
 
-    //X-stop brake mode
-    joystick.x().whileTrue(drivetrain.applyRequest(() -> brake));
-
     //AutoAlign to apriltag
     //fieldcentricfacingangle.HeadingController can be found in the POV button section
     joystick.rightStick().whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
@@ -144,10 +150,6 @@ public class RobotContainer {
                                         .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
                                         ).ignoringDisable(true))
                                         .whileTrue(new AutoAlignCommand(drivetrain));
-
-    //shoot button
-    //joystick.y().whileTrue(new AutoShootCommand());
-    joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
 
     // reset the field-centric heading on left bumper press
     joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
@@ -182,10 +184,10 @@ public class RobotContainer {
 
     Button_5.onTrue( //speaker shoot position against subwoofer
       new ShoulderPositionCommand(Constants.k_ShoulderShootPosition)
-      .alongWith(new WristPositionCommand(Constants.k_WristPreloadShootPosition))
+      .alongWith(new WristPositionCommand(Constants.k_WristShootPosition))
     );
     
-    Button_6.onTrue(new PrepareToShootCommand()); //Use the FSS data to manage shoulder and wrist
+    Button_6.onTrue(new PrepareToShootCommand()); //Use the FSS data to manage wrist and shooting speeds
 
     Button_8.whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed) //allows Chloe to activate autoalign
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
@@ -219,6 +221,7 @@ public class RobotContainer {
   // Register Named Commands for pathplanner to use during autonomous
   NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
   NamedCommands.registerCommand("Auto Shoot", new AutoShoot_A().andThen(new AutoShoot_B().andThen(new AutoShoot_C())).withTimeout(5));
+  NamedCommands.registerCommand("Auto Align", new AutoAlignCommand(drivetrain).withTimeout(1));
   }
 
   public RobotContainer() {

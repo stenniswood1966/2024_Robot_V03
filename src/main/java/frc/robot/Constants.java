@@ -18,48 +18,26 @@ public class Constants {
 
     //Shoulder MM postions
     public static boolean k_ShoulderMMisMoving = false;
-    public static final double k_ShoulderHomePosition = 2;
+    public static final double k_ShoulderHomePosition = 1;
     public static final double k_ShoulderShootPosition = 11;
     public static final double k_ShoulderAmpPosition = 46.563;
 
     //Wrist MM Position
     public static boolean k_WristMMisMoving = false;
     public static double k_WristHomePosition = 0.242;
+    public static double k_WristShootPosition = 0.316;
     public static double k_WristAmpPosition = 0.609;
-
-    //FiringSolutionSubsystem
-    public static double k_LLDistanceToAprilTag = 0.0;
-    public static double k_FiringSolutionSpeed = 45;
-    public static double k_FiringSolutionAngle = 0.316;
 
     //shootersubsystem motor speeds
     public static double k_shootmotor1speed = 0.0;
     public static double k_shootmotor2speed = 0.0;
-    
+    public static double k_ShootDefaultSpeed = 50;
 
-//Shooting postion
-    //Preload
-    public static double k_PreloadShooterSpeed = 50;
-    public static double k_WristPreloadShootPosition = 0.316; //0.137
+    //FiringSolutionSubsystem
+    public static double k_LLDistanceToAprilTag = 0.0;
+    public static double k_FiringSolutionSpeed = k_ShootDefaultSpeed; //set the initial values
+    public static double k_FiringSolutionAngle = k_WristShootPosition; //set the initial values
 
-    //Position 1
-    public static double k_Pos1ShooterSpeed = 60;
-    public static double k_WristPos1ShootPosition = 0.253;
 
-    //Position 2
-    public static double k_Pos2ShooterSpeed = 60;
-    public static double k_WristPos2ShootPosition = 0.249;
-
-    //Position 2a
-    public static double k_Pos2aShooterSpeed = 60;
-    public static double k_WristPos2aShootPosition = 0.240;
-
-    //Position 3
-    public static double k_Pos3ShooterSpeed = 60;
-    public static double k_WristPos3ShootPosition = 0.244;
-
-    //Position 3a
-    public static double k_Pos3aShooterSpeed = 60;
-    public static double k_WristPos3aShootPosition = 0.241;
     
 }
