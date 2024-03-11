@@ -230,7 +230,16 @@ public class RobotContainer {
   // Register Named Commands for pathplanner to use during autonomous
   NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
   NamedCommands.registerCommand("Auto Shoot", new AutoShoot_A().andThen(new AutoShoot_B().andThen(new AutoShoot_C())).withTimeout(5));
-  NamedCommands.registerCommand("Auto Align", new AutoAlignCommand(drivetrain).withTimeout(1));
+  NamedCommands.registerCommand("Auto Align", (drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
+                                        .withVelocityY(-joystick.getLeftX() * MaxSpeed)
+                                        .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
+                                        ).ignoringDisable(true))
+                                        .alongWith(new AutoAlignCommand(drivetrain)
+                                        .withTimeout(2)
+                                        .andThen(new AutoShoot_A())
+                                        .andThen(new AutoShoot_B())
+                                        .andThen(new AutoShoot_C())
+                                        ));
   }
 
   public RobotContainer() {

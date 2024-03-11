@@ -68,6 +68,11 @@ public class AutoAlignCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    //return false;
+    if (tx < 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
