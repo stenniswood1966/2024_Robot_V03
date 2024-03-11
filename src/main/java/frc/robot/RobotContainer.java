@@ -23,14 +23,6 @@ import frc.robot.commands.AutoAlignCommand;
 import frc.robot.commands.AutoShoot_A;
 import frc.robot.commands.AutoShoot_B;
 import frc.robot.commands.AutoShoot_C;
-import frc.robot.commands.Auto_Feed_B;
-import frc.robot.commands.Auto_Home_C;
-import frc.robot.commands.Auto_Pos1_A;
-import frc.robot.commands.Auto_Pos2_A;
-import frc.robot.commands.Auto_Pos2a_A;
-import frc.robot.commands.Auto_Pos3_A;
-import frc.robot.commands.Auto_Pos3a_A;
-import frc.robot.commands.Auto_Preload_A;
 import frc.robot.commands.ClimbDownCommand;
 import frc.robot.commands.ClimbUpCommand;
 import frc.robot.commands.FeedCommand;
@@ -227,13 +219,6 @@ public class RobotContainer {
   // Register Named Commands for pathplanner to use during autonomous
   NamedCommands.registerCommand("Intake and Load", new IntakeLoadCommand().withTimeout(5));
   NamedCommands.registerCommand("Auto Shoot", new AutoShoot_A().andThen(new AutoShoot_B().andThen(new AutoShoot_C())).withTimeout(5));
-  //joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
-  NamedCommands.registerCommand("Preload_Shoot", new Auto_Preload_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
-  NamedCommands.registerCommand("Position2_Shoot", new Auto_Pos2_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
-  NamedCommands.registerCommand("Position2a_Shoot", new Auto_Pos2a_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
-  NamedCommands.registerCommand("Position1_Shoot", new Auto_Pos1_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
-  NamedCommands.registerCommand("Position3_Shoot", new Auto_Pos3_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
-  NamedCommands.registerCommand("Position3a_Shoot", new Auto_Pos3a_A().andThen(new Auto_Feed_B()).andThen(new Auto_Home_C()).withTimeout(5));
   }
 
   public RobotContainer() {
