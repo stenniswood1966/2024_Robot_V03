@@ -116,8 +116,17 @@ public class RobotContainer {
 
     //shoot button
     joystick.y().whileTrue(new AutoShoot_A().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
-    joystick.a().whileTrue(new AutoAlignCommand(drivetrain).withTimeout(1).andThen(new AutoShoot_A()).andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+    joystick.a().whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
+                                        .withVelocityY(-joystick.getLeftX() * MaxSpeed)
+                                        .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
+                                        ).ignoringDisable(true))
+                                        .whileTrue(new AutoAlignCommand(drivetrain).withTimeout(1)
+                                        .andThen(new AutoShoot_A())
+                                        .andThen(new AutoShoot_B())
+                                        .andThen(new AutoShoot_C())
+                                        );
     
+
     joystick.b().onTrue(new IntakeLoadCommand());
     
     //X-stop brake mode
