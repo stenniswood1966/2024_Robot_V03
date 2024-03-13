@@ -91,8 +91,6 @@ public class RobotContainer {
   private JoystickButton Button_13 = new JoystickButton(m_operator1Controller, 13);
   private JoystickButton Button_17 = new JoystickButton(m_operator1Controller, 17);
   private JoystickButton Button_18 = new JoystickButton(m_operator1Controller, 18);
-  private JoystickButton Button_17 = new JoystickButton(m_operator1Controller, 17);
-  private JoystickButton Button_18 = new JoystickButton(m_operator1Controller, 18);
   private JoystickButton Button_20 = new JoystickButton(m_operator1Controller, 20);
   private JoystickButton Button_21 = new JoystickButton(m_operator1Controller, 21);
   private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22);
