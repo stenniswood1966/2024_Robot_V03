@@ -110,4 +110,8 @@ motor1.setControl(motorRequest); // Requests the motor to move
   public static void subtractWristModifier() {
     Constants.k_WristModifyPosition = Constants.k_WristModifyPosition - 0.001;
   }
+
+  public static void resetWristModifier() {
+    Constants.k_WristModifyPosition = 0.0;
+  }
 }

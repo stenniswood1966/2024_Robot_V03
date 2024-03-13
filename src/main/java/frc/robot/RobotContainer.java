@@ -91,6 +91,7 @@ public class RobotContainer {
   private JoystickButton Button_13 = new JoystickButton(m_operator1Controller, 13);
   private JoystickButton Button_17 = new JoystickButton(m_operator1Controller, 17);
   private JoystickButton Button_18 = new JoystickButton(m_operator1Controller, 18);
+  private JoystickButton Button_19 = new JoystickButton(m_operator1Controller, 19);
   private JoystickButton Button_20 = new JoystickButton(m_operator1Controller, 20);
   private JoystickButton Button_21 = new JoystickButton(m_operator1Controller, 21);
   private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22);
@@ -216,6 +217,8 @@ public class RobotContainer {
     Button_17.onTrue(Commands.runOnce(WristSubsystem::addWristModifier, wristsubsystem).ignoringDisable(true));
 
     Button_18.onTrue(Commands.runOnce(WristSubsystem::subtractWristModifier, wristsubsystem).ignoringDisable(true));
+
+    Button_19.onTrue(Commands.runOnce(WristSubsystem::resetWristModifier, wristsubsystem).ignoringDisable(true));
 
     Button_20.whileTrue(new ShoulderManualCommand().alongWith(new WristManualCommand())); //stops MM from running
     
