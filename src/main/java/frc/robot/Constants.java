@@ -27,6 +27,7 @@ public class Constants {
     public static double k_WristHomePosition = 0.242;
     public static double k_WristShootPosition = 0.316;
     public static double k_WristAmpPosition = 0.609;
+    public static double k_WristModifyPosition = 0.0;
 
     //shootersubsystem motor speeds
     public static double k_shootmotor1speed = 0.0;

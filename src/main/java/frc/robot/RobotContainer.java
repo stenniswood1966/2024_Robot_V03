@@ -88,6 +88,8 @@ public class RobotContainer {
   private JoystickButton Button_10 = new JoystickButton(m_operator1Controller, 10);
   private JoystickButton Button_12 = new JoystickButton(m_operator1Controller, 12);
   private JoystickButton Button_13 = new JoystickButton(m_operator1Controller, 13);
+  private JoystickButton Button_17 = new JoystickButton(m_operator1Controller, 17);
+  private JoystickButton Button_18 = new JoystickButton(m_operator1Controller, 18);
   private JoystickButton Button_20 = new JoystickButton(m_operator1Controller, 20);
   private JoystickButton Button_21 = new JoystickButton(m_operator1Controller, 21);
   private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22);
@@ -210,6 +212,10 @@ public class RobotContainer {
 
     Button_13.whileTrue(new ClimbDownCommand());
 
+    Button_17.onTrue(addWristModifier());
+
+    Button_18.onTrue(subtractWristModifier());
+
     Button_20.whileTrue(new ShoulderManualCommand().alongWith(new WristManualCommand())); //stops MM from running
     
     Button_21.onTrue( //home
@@ -244,19 +250,29 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
     namedcommands(); //pathplanner namedcommands
-    //isAllianceRed();
-    //Commands.run(shootsubsystem::PreShoot, shootsubsystem);
+    
+    SmartDashboard.putNumber("k_WristModifyPosition: ", Constants.k_WristModifyPosition);
 
     //pathplanner sendablechooser
     autochooser = AutoBuilder.buildAutoChooser("None");
     SmartDashboard.putData("Auto Chooser", autochooser);
   }
 
-
-
   public Command getAutonomousCommand() {
     /* First put the drivetrain into auto run mode, then run the auto */
     //return runAuto;
     return autochooser.getSelected();
+  }
+
+  public Command addWristModifier() {
+    Constants.k_WristModifyPosition = Constants.k_WristModifyPosition + 0.001;
+    SmartDashboard.putNumber("k_WristModifyPosition: ", Constants.k_WristModifyPosition);
+    return null;
+  }
+
+  public Command subtractWristModifier() {
+    Constants.k_WristModifyPosition = Constants.k_WristModifyPosition - 0.001;
+    SmartDashboard.putNumber("k_WristModifyPosition: ", Constants.k_WristModifyPosition);
+    return null;
   }
 }
