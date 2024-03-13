@@ -213,9 +213,9 @@ public class RobotContainer {
 
     Button_13.whileTrue(new ClimbDownCommand());
 
-    Button_17.onTrue(Commands.runOnce(WristSubsystem::addWristModifier, wristsubsystem));
+    Button_17.onTrue(Commands.runOnce(WristSubsystem::addWristModifier, wristsubsystem).ignoringDisable(true));
 
-    Button_18.onTrue(Commands.runOnce(WristSubsystem::subtractWristModifier, wristsubsystem));
+    Button_18.onTrue(Commands.runOnce(WristSubsystem::subtractWristModifier, wristsubsystem).ignoringDisable(true));
 
     Button_20.whileTrue(new ShoulderManualCommand().alongWith(new WristManualCommand())); //stops MM from running
     
