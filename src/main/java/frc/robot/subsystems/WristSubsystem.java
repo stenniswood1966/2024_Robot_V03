@@ -19,6 +19,7 @@ import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.generated.TunerConstants;
@@ -83,6 +84,7 @@ public class WristSubsystem extends SubsystemBase {
 
     SmartDashboard.putBoolean("MM Status - Wrist: ", Constants.k_WristMMisMoving);
     SmartDashboard.putNumber("Wrist position: ", cancoder.getPosition().getValueAsDouble());
+    SmartDashboard.putNumber("k_WristModifyPosition: ", Constants.k_WristModifyPosition);
   }
 
   public void set(Double speed)  {
@@ -100,5 +102,13 @@ motor1.setControl(motorRequest); // Requests the motor to move
 
   public void disablemotionmagic() {
     motor1.set(0);
+  }
+  
+  public static void addWristModifier() {
+    Constants.k_WristModifyPosition = Constants.k_WristModifyPosition + 0.001;
+  }
+
+  public static void subtractWristModifier() {
+    Constants.k_WristModifyPosition = Constants.k_WristModifyPosition - 0.001;
   }
 }

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
@@ -88,6 +89,8 @@ public class RobotContainer {
   private JoystickButton Button_10 = new JoystickButton(m_operator1Controller, 10);
   private JoystickButton Button_12 = new JoystickButton(m_operator1Controller, 12);
   private JoystickButton Button_13 = new JoystickButton(m_operator1Controller, 13);
+  private JoystickButton Button_17 = new JoystickButton(m_operator1Controller, 17);
+  private JoystickButton Button_18 = new JoystickButton(m_operator1Controller, 18);
   private JoystickButton Button_20 = new JoystickButton(m_operator1Controller, 20);
   private JoystickButton Button_21 = new JoystickButton(m_operator1Controller, 21);
   private JoystickButton Button_22 = new JoystickButton(m_operator1Controller, 22);
@@ -210,6 +213,10 @@ public class RobotContainer {
 
     Button_13.whileTrue(new ClimbDownCommand());
 
+    Button_17.onTrue(Commands.runOnce(WristSubsystem::addWristModifier, wristsubsystem));
+
+    Button_18.onTrue(Commands.runOnce(WristSubsystem::subtractWristModifier, wristsubsystem));
+
     Button_20.whileTrue(new ShoulderManualCommand().alongWith(new WristManualCommand())); //stops MM from running
     
     Button_21.onTrue( //home
@@ -244,15 +251,11 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
     namedcommands(); //pathplanner namedcommands
-    //isAllianceRed();
-    //Commands.run(shootsubsystem::PreShoot, shootsubsystem);
-
+    
     //pathplanner sendablechooser
     autochooser = AutoBuilder.buildAutoChooser("None");
     SmartDashboard.putData("Auto Chooser", autochooser);
   }
-
-
 
   public Command getAutonomousCommand() {
     /* First put the drivetrain into auto run mode, then run the auto */
