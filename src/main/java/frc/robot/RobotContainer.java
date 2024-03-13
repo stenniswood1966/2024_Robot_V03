@@ -251,8 +251,6 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
     namedcommands(); //pathplanner namedcommands
-    //isAllianceRed();
-    //Commands.run(shootsubsystem::PreShoot, shootsubsystem);
 
     //pathplanner sendablechooser
     autochooser = AutoBuilder.buildAutoChooser("None");
@@ -263,17 +261,5 @@ public class RobotContainer {
     /* First put the drivetrain into auto run mode, then run the auto */
     //return runAuto;
     return autochooser.getSelected();
-  }
-
-  public Command addWristModifier() {
-    Constants.k_WristModifyPosition = Constants.k_WristModifyPosition + 0.001;
-    SmartDashboard.putNumber("k_WristModifyPosition: ", Constants.k_WristModifyPosition);
-    return null;
-  }
-
-  public Command subtractWristModifier() {
-    Constants.k_WristModifyPosition = Constants.k_WristModifyPosition - 0.001;
-    SmartDashboard.putNumber("k_WristModifyPosition: ", Constants.k_WristModifyPosition);
-    return null;
   }
 }
