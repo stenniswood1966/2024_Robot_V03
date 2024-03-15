@@ -22,12 +22,6 @@
           "data": {
             "name": "Auto Align Shoot"
           }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Auto Shoot"
-          }
         }
       ]
     }
