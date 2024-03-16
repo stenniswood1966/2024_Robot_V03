@@ -29,11 +29,11 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     shooterSpeeds.put(40.0, (double) 50);
     shooterSpeeds.put(45.0, (double) 50);
     shooterSpeeds.put(50.0, (double) 50);
-    shooterSpeeds.put(55.0, (double) 50);
-    shooterSpeeds.put(60.0, (double) 50);
+    shooterSpeeds.put(55.0, (double) 55);
+    shooterSpeeds.put(60.0, (double) 55);
     shooterSpeeds.put(65.0, (double) 55);
     shooterSpeeds.put(70.0, (double) 55);
-    shooterSpeeds.put(75.0, (double) 56);
+    shooterSpeeds.put(75.0, (double) 60);
     shooterSpeeds.put(80.0, (double) 60);
     shooterSpeeds.put(85.0, (double) 60);
     shooterSpeeds.put(90.0, (double) 60);
@@ -46,26 +46,26 @@ public class FiringSolutionSubsystem extends SubsystemBase {
   }
 
     private void setUpWristLookUpTable() {
-    wristAngle.put(0.0, (double) 0.319 + Constants.k_WristModifyPosition);
-    wristAngle.put(30.0, (double) 0.319 + Constants.k_WristModifyPosition);
-    wristAngle.put(35.0, (double) 0.319 + Constants.k_WristModifyPosition);
-    wristAngle.put(40.0, (double) 0.319 + Constants.k_WristModifyPosition);
-    wristAngle.put(45.0, (double) 0.330 + Constants.k_WristModifyPosition);
-    wristAngle.put(50.0, (double) 0.337 + Constants.k_WristModifyPosition);
-    wristAngle.put(55.0, (double) 0.344 + Constants.k_WristModifyPosition);
-    wristAngle.put(60.0, (double) 0.356 + Constants.k_WristModifyPosition);
-    wristAngle.put(65.0, (double) 0.362 + Constants.k_WristModifyPosition);
-    wristAngle.put(70.0, (double) 0.365 + Constants.k_WristModifyPosition);
-    wristAngle.put(75.0, (double) 0.372 + Constants.k_WristModifyPosition);
-    wristAngle.put(80.0, (double) 0.375 + Constants.k_WristModifyPosition);
-    wristAngle.put(85.0, (double) 0.379 + Constants.k_WristModifyPosition);
-    wristAngle.put(90.0, (double) 0.386 + Constants.k_WristModifyPosition);
-    wristAngle.put(95.0, (double) 0.388 + Constants.k_WristModifyPosition);
-    wristAngle.put(100.0, (double) 0.390 + Constants.k_WristModifyPosition);
-    wristAngle.put(105.00, (double) 0.392 + Constants.k_WristModifyPosition);
-    wristAngle.put(110.00, (double) 0.392 + Constants.k_WristModifyPosition);
-    wristAngle.put(115.00, (double) 0.392 + Constants.k_WristModifyPosition);
-    wristAngle.put(999.0, (double) 0.392 + Constants.k_WristModifyPosition);
+    wristAngle.put(0.0, (double) 0.348 + Constants.k_WristModifyPosition);
+    wristAngle.put(30.0, (double) 0.348 + Constants.k_WristModifyPosition);
+    wristAngle.put(35.0, (double) 0.348 + Constants.k_WristModifyPosition);
+    wristAngle.put(40.0, (double) 0.350 + Constants.k_WristModifyPosition);
+    wristAngle.put(45.0, (double) 0.359 + Constants.k_WristModifyPosition);
+    wristAngle.put(50.0, (double) 0.367 + Constants.k_WristModifyPosition);
+    wristAngle.put(55.0, (double) 0.369 + Constants.k_WristModifyPosition);
+    wristAngle.put(60.0, (double) 0.373 + Constants.k_WristModifyPosition);
+    wristAngle.put(65.0, (double) 0.380 + Constants.k_WristModifyPosition);
+    wristAngle.put(70.0, (double) 0.382 + Constants.k_WristModifyPosition);
+    wristAngle.put(75.0, (double) 0.391 + Constants.k_WristModifyPosition);
+    wristAngle.put(80.0, (double) 0.395 + Constants.k_WristModifyPosition);
+    wristAngle.put(85.0, (double) 0.400 + Constants.k_WristModifyPosition);
+    wristAngle.put(90.0, (double) 0.400 + Constants.k_WristModifyPosition);
+    wristAngle.put(95.0, (double) 0.400+ Constants.k_WristModifyPosition);
+    wristAngle.put(100.0, (double) 0.400 + Constants.k_WristModifyPosition);
+    wristAngle.put(105.00, (double) 0.400 + Constants.k_WristModifyPosition);
+    wristAngle.put(110.00, (double) 0.400 + Constants.k_WristModifyPosition);
+    wristAngle.put(115.00, (double) 0.400 + Constants.k_WristModifyPosition);
+    wristAngle.put(999.0, (double) 0.400 + Constants.k_WristModifyPosition);
   }
 
   private double getDistance() {

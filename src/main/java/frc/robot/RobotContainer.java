@@ -65,7 +65,7 @@ public class RobotContainer {
   public static LEDSubsystem ledsubsystem = new LEDSubsystem();
 
   //Testing joystick2
-  //public static CommandXboxController joystick2 = new CommandXboxController(2);
+  public static CommandXboxController joystick2 = new CommandXboxController(2);
   
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
@@ -113,7 +113,7 @@ public class RobotContainer {
         ).ignoringDisable(true));
 
 //Testing Joystick2
-    //joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
+    joystick2.a().whileTrue(new WristManualCommand());
 
 
   //assign driver joystick buttons to drivetrain functions
@@ -197,7 +197,7 @@ public class RobotContainer {
 
     Button_5.onTrue( //speaker shoot position against subwoofer
       new ShoulderPositionCommand(Constants.k_ShoulderShootPosition)
-      .alongWith(new WristPositionCommand(Constants.k_WristShootPosition))
+      .alongWith(new WristPositionCommand(Constants.k_WristShootPosition + Constants.k_WristModifyPosition))
     );
     
     Button_6.onTrue(new PrepareToShootCommand()); //Use the FSS data to manage wrist and shooting speeds

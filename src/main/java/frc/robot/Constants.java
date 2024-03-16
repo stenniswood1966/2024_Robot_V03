@@ -24,8 +24,8 @@ public class Constants {
 
     //Wrist MM Position
     public static boolean k_WristMMisMoving = false;
-    public static double k_WristHomePosition = 0.242;
-    public static double k_WristShootPosition = 0.316; //default shooting position
+    public static double k_WristHomePosition = 0.265;
+    public static double k_WristShootPosition = 0.348; //default shooting position
     public static double k_WristAmpPosition = 0.609;
     public static double k_WristModifyPosition = 0.0; //used to modify the wrist angle at all setpoints. buttons 17 & 18 will adjust realtime.
 
