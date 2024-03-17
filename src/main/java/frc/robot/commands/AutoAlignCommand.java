@@ -56,7 +56,7 @@ public class AutoAlignCommand extends Command {
       }
     }
 
-    SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());  
+    //SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());  
     System.out.println("limelight: " + tx);
     System.out.println("Rotation2d: " +_drivetrain.getState().Pose.getRotation().getDegrees());
   }

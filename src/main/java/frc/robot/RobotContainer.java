@@ -124,7 +124,7 @@ public class RobotContainer {
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
                                         .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
                                         ).ignoringDisable(true))
-                                        .whileTrue(new AutoAlignCommand(drivetrain).withTimeout(0.250)
+                                        .whileTrue(new AutoAlignCommand(drivetrain).repeatedly().withTimeout(0.250)
                                         .andThen(new AutoShoot_A())
                                         .andThen(new AutoShoot_B())
                                         .andThen(new AutoShoot_C())
@@ -243,8 +243,8 @@ public class RobotContainer {
   NamedCommands.registerCommand("Auto Align Shoot", (drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
                                         .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
-                                        ).ignoringDisable(true)).withTimeout(1)
-                                        .alongWith(new AutoAlignCommand(drivetrain)).withTimeout(1)
+                                        ).ignoringDisable(true)).withTimeout(0.250)
+                                        .alongWith(new AutoAlignCommand(drivetrain)).withTimeout(0.250)
                                         .andThen(new AutoShoot_A())
                                         .andThen(new AutoShoot_B())
                                         .andThen(new AutoShoot_C())
