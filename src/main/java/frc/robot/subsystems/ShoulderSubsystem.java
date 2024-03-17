@@ -102,7 +102,7 @@ public class ShoulderSubsystem extends SubsystemBase {
     var motorRequest = new DutyCycleOut(speed); //Converts the double to DutyCycleOut
     motor1.setControl(motorRequest); // Requests the motor to move
 
-     motor2.setControl(motorRequest); // Requests the motor to move
+    motor2.setControl(motorRequest); // Requests the motor to move
   }
 
   public void stop() {

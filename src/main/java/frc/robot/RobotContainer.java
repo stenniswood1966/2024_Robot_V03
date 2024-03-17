@@ -113,7 +113,7 @@ public class RobotContainer {
         ).ignoringDisable(true));
 
 //Testing Joystick2
-    joystick2.a().whileTrue(new WristManualCommand());
+    joystick2.a().whileTrue(new WristManualCommand().alongWith(new ShoulderManualCommand()));
 
 
   //assign driver joystick buttons to drivetrain functions
@@ -124,7 +124,7 @@ public class RobotContainer {
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
                                         .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
                                         ).ignoringDisable(true))
-                                        .whileTrue(new AutoAlignCommand(drivetrain) //.withTimeout(1)
+                                        .whileTrue(new AutoAlignCommand(drivetrain).withTimeout(0.250)
                                         .andThen(new AutoShoot_A())
                                         .andThen(new AutoShoot_B())
                                         .andThen(new AutoShoot_C())
@@ -162,7 +162,7 @@ public class RobotContainer {
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
                                         .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
                                         ).ignoringDisable(true))
-                                        .whileTrue(new AutoAlignCommand(drivetrain));
+                                        .whileTrue(new AutoAlignCommand(drivetrain).repeatedly());
 
     // reset the field-centric heading on left bumper press
     joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
@@ -206,7 +206,7 @@ public class RobotContainer {
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
                                         .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
                                         ).ignoringDisable(true))
-                                        .whileTrue(new AutoAlignCommand(drivetrain));
+                                        .whileTrue(new AutoAlignCommand(drivetrain).repeatedly());
 
     Button_10.whileTrue(new OutakeCommand());
 

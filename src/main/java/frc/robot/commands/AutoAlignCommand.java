@@ -39,23 +39,24 @@ public class AutoAlignCommand extends Command {
 
       if (tx <= 25) { //blue alliance
         Constants.k_steering_target = new Rotation2d(Math.toRadians(pose.Pose.getRotation().getDegrees() - tx));
-        SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees() - tx);
+        //SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees() - tx);
       }
       else {
         Constants.k_steering_target = new Rotation2d(Math.toRadians(pose.Pose.getRotation().getDegrees()));
-        SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());
+        //SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());
       }
     } else { //Red alliance
       if (tx <= 25) {
         Constants.k_steering_target = new Rotation2d(Math.toRadians(pose.Pose.getRotation().getDegrees() - tx + 180));
-        SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees() - tx + 180);
+        //SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees() - tx + 180);
       }
       else {
         Constants.k_steering_target = new Rotation2d(Math.toRadians(pose.Pose.getRotation().getDegrees()));
-        SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());
+        //SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());
       }
     }
-      
+
+    SmartDashboard.putNumber("Steering target angle: ", pose.Pose.getRotation().getDegrees());  
     System.out.println("limelight: " + tx);
     System.out.println("Rotation2d: " +_drivetrain.getState().Pose.getRotation().getDegrees());
   }
